@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-label="Expedition Yorkshire image placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3C5849"/>
+      <stop offset="0.55" stop-color="#28392F"/>
+      <stop offset="1" stop-color="#1C2A22"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9A24B" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#C9A24B" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="url(#g)"/>
+  <circle cx="780" cy="280" r="450" fill="url(#sun)"/>
+  <g fill="none" stroke="#C9A24B" stroke-opacity="0.22" stroke-width="3">
+    <path d="M0 620 Q 500 550, 1000 620"/>
+    <path d="M0 740 Q 500 670, 1000 740"/>
+    <path d="M0 860 Q 500 800, 1000 860"/>
+  </g>
+  <g fill="#F3F1EA" fill-opacity="0.30" font-family="Georgia, serif" text-anchor="middle">
+    <text x="500" y="500" font-size="45" letter-spacing="2">EXPEDITION YORKSHIRE</text>
+  </g>
+</svg>
