@@ -13,28 +13,58 @@
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
-  /* ---------- Desktop mega-menu ---------- */
+  /* ---------- Desktop full-width mega-menu ---------- */
   function initMegaMenu() {
-    var items = $$(".nav-item");
-    items.forEach(function (item) {
-      var trigger = $(".nav-trigger", item);
-      if (!trigger) return;
-      function open() { close(); item.classList.add("open"); trigger.setAttribute("aria-expanded", "true"); }
-      function close() { items.forEach(function (i) { i.classList.remove("open"); var t = $(".nav-trigger", i); if (t) t.setAttribute("aria-expanded", "false"); }); }
-      item.addEventListener("mouseenter", open);
-      item.addEventListener("mouseleave", function () { item.classList.remove("open"); trigger.setAttribute("aria-expanded", "false"); });
-      trigger.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (item.classList.contains("open")) { item.classList.remove("open"); trigger.setAttribute("aria-expanded", "false"); }
-        else { open(); }
+    var header = document.getElementById("site-header");
+    if (!header) return;
+    var items = $$(".nav-item[data-menu]", header);
+    var panels = {};
+    $$(".mega-panel[data-panel]", header).forEach(function (p) { panels[p.getAttribute("data-panel")] = p; });
+    var closeTimer = null;
+
+    function openMenu(key) {
+      clearTimeout(closeTimer);
+      items.forEach(function (i) {
+        var on = i.getAttribute("data-menu") === key;
+        i.classList.toggle("active", on);
+        var t = $(".nav-trigger", i);
+        if (t) t.setAttribute("aria-expanded", on ? "true" : "false");
       });
+      Object.keys(panels).forEach(function (k) { panels[k].classList.toggle("open", k === key); });
+      header.classList.add("menu-open");
+    }
+    function closeMenu() {
+      items.forEach(function (i) {
+        i.classList.remove("active");
+        var t = $(".nav-trigger", i);
+        if (t) t.setAttribute("aria-expanded", "false");
+      });
+      Object.keys(panels).forEach(function (k) { panels[k].classList.remove("open"); });
+      header.classList.remove("menu-open");
+    }
+    function scheduleClose() { clearTimeout(closeTimer); closeTimer = setTimeout(closeMenu, 150); }
+
+    items.forEach(function (item) {
+      var key = item.getAttribute("data-menu");
+      var trigger = $(".nav-trigger", item);
+      item.addEventListener("mouseenter", function () { openMenu(key); });
+      item.addEventListener("mouseleave", scheduleClose);
+      if (trigger) {
+        trigger.addEventListener("focus", function () { openMenu(key); });
+        trigger.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (item.classList.contains("active")) closeMenu(); else openMenu(key);
+        });
+      }
+      var panel = panels[key];
+      if (panel) {
+        panel.addEventListener("mouseenter", function () { clearTimeout(closeTimer); });
+        panel.addEventListener("mouseleave", scheduleClose);
+      }
     });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") items.forEach(function (i) { i.classList.remove("open"); var t = $(".nav-trigger", i); if (t) t.setAttribute("aria-expanded", "false"); });
-    });
-    document.addEventListener("click", function (e) {
-      if (!e.target.closest(".nav-item")) items.forEach(function (i) { i.classList.remove("open"); });
-    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
+    document.addEventListener("click", function (e) { if (!header.contains(e.target)) closeMenu(); });
+    document.addEventListener("focusin", function (e) { if (!header.contains(e.target)) closeMenu(); });
   }
 
   /* ---------- Mobile drawer + accordions ---------- */
