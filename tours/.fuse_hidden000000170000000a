@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yorkshire Private Tours | Day Tours, Transfers &amp; Bespoke</title>
+  <meta name="description" content="Browse Expedition Yorkshire&#x27;s private day tours, scenic transfer tours and bespoke Yorkshire experiences. Up to 7 guests, one price, hotel pickup. Check availability.">
+  <!-- NOTE: canonical/OG domain is a TEMPORARY placeholder (https://www.expeditionyorkshire.com). Review before launch. -->
+  <link rel="canonical" href="https://www.expeditionyorkshire.com/tours/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Expedition Yorkshire">
+  <meta property="og:title" content="Yorkshire Private Tours | Day Tours, Transfers &amp; Bespoke">
+  <meta property="og:description" content="Browse Expedition Yorkshire&#x27;s private day tours, scenic transfer tours and bespoke Yorkshire experiences. Up to 7 guests, one price, hotel pickup. Check availability.">
+  <meta property="og:url" content="https://www.expeditionyorkshire.com/tours/">
+  <meta property="og:image" content="https://www.expeditionyorkshire.com/assets/images/og-default.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yorkshire Private Tours | Day Tours, Transfers &amp; Bespoke">
+  <meta name="twitter:description" content="Browse Expedition Yorkshire&#x27;s private day tours, scenic transfer tours and bespoke Yorkshire experiences. Up to 7 guests, one price, hotel pickup. Check availability.">
+  <meta name="twitter:image" content="https://www.expeditionyorkshire.com/assets/images/og-default.svg">
+  <meta name="theme-color" content="#1F2A24">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="/assets/images/placeholder-hero.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TravelAgency",
+      "@id": "https://www.expeditionyorkshire.com/#org",
+      "name": "Expedition Yorkshire",
+      "url": "https://www.expeditionyorkshire.com/",
+      "telephone": "+441904235928",
+      "email": "andrew@expeditionyorkshire.com",
+      "image": "https://www.expeditionyorkshire.com/assets/images/og-default.svg",
+      "logo": "https://www.expeditionyorkshire.com/assets/images/ey-logo.png",
+      "priceRange": "££££",
+      "areaServed": "Yorkshire and Northern England",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "York",
+        "addressRegion": "North Yorkshire",
+        "addressCountry": "GB"
+      },
+      "sameAs": []
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.expeditionyorkshire.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tours",
+          "item": "https://www.expeditionyorkshire.com/tours/"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "name": "Private Yorkshire Day Tour",
+      "description": "Private driver-guided Yorkshire day tour for up to 7 guests.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Expedition Yorkshire"
+      },
+      "image": "https://www.expeditionyorkshire.com/assets/images/og-default.svg",
+      "url": "https://www.expeditionyorkshire.com/tours/",
+      "offers": {
+        "@type": "Offer",
+        "price": "985",
+        "priceCurrency": "GBP",
+        "availability": "https://schema.org/InStock",
+        "url": "https://www.expeditionyorkshire.com/tours/",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "985",
+          "priceCurrency": "GBP",
+          "valueAddedTaxIncluded": true,
+          "description": "Per group, up to 7 guests, including VAT"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "180",
+        "bestRating": "5"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body data-page-tour="">
+  <a class="skip-link" href="#main">Skip to content</a><main id="main"><div class="hero on-dark">
+    <div class="hero-media"><img src="/assets/images/placeholder-hero.svg" width="1600" height="900" alt="V-Class on a moor-top road at golden hour, guests stepping out, guide gesturing to the view" loading="eager" fetchpriority="high"></div>
+    <p class="media-note">HERO IMAGE placeholder · muted video loop recommended (static fallback required). Replace before launch.</p>
+    <header class="site-header is-dark" id="site-header">
+    <div class="nav-bar">
+      <a class="brand" href="/" aria-label="Expedition Yorkshire home"><img src="/assets/images/ey-logo-ondark.png" alt="Expedition Yorkshire" width="139" height="34"></a>
+      <nav class="nav-main" aria-label="Primary">
+        <div class="nav-item" data-menu="tours">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-tours">Tours <span class="nav-chev"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      </div><div class="nav-item" data-menu="design">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-design">Design a Tour <span class="nav-chev"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      </div><div class="nav-item" data-menu="chauf">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-chauf">Chauffeur &amp; Transfers <span class="nav-chev"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      </div><div class="nav-item" data-menu="why">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-why">Why Us <span class="nav-chev"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      </div><div class="nav-item" data-menu="reviews">
+        <button class="nav-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="mega-reviews">Reviews <span class="nav-chev"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span></button>
+      </div>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-phone" href="tel:+441904235928">01904 235928</a>
+        <button class="btn btn-primary btn-sm" data-open-enquiry>Check availability</button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </div>
+    <div class="mega-wrap"><div class="mega-panel" id="mega-tours" data-panel="tours" role="region" aria-label="Tours">
+      <div class="mega-inner">
+        <div class="mega-col">
+          <p class="mega-col-label">Day tours</p>
+          <nav class="mega-links"><a href="/whitby-moors-coast/">Whitby, Moors &amp; Coast</a><a href="#">Dales, castles &amp; villages</a><a href="#">All Creatures</a><a href="#">Brontë Country</a><a href="#">Heritage &amp; abbeys</a></nav>
+          <a class="mega-viewall" href="/tours/">View all tours <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col-label">Browse by interest</p>
+          <nav class="mega-links"><a href="/tours/">Coast &amp; sea</a><a href="/tours/">Castles &amp; history</a><a href="/tours/">Villages &amp; countryside</a><a href="/tours/">Film &amp; literary</a></nav>
+        </div>
+        <a class="mega-feature" href="/whitby-moors-coast/">
+        <span class="mega-feature-media" style="background:linear-gradient(135deg,#3c5849,#26392e)"><span class="mega-feature-badge">Most booked</span></span>
+        <span class="mega-feature-body">
+          <span class="mega-feature-title">Whitby, Moors &amp; Coast</span>
+          <span class="mega-feature-meta">From £985 / group</span>
+          <span class="mega-feature-link">View tour details →</span>
+        </span>
+      </a>
+      </div></div><div class="mega-panel" id="mega-design" data-panel="design" role="region" aria-label="Design a tour">
+      <div class="mega-inner">
+        <div class="mega-col">
+          <p class="mega-col-label">Design a tour</p>
+          <div class="mega-rich-list"><a class="mega-rich" href="#"><span class="mega-rich-t">Design your tour</span><span class="mega-rich-d">Start from scratch with our team.</span></a><a class="mega-rich" href="#"><span class="mega-rich-t">Plan your day</span><span class="mega-rich-d">Build a single day around what matters to you.</span></a><a class="mega-rich" href="#"><span class="mega-rich-t">Multi-day expeditions</span><span class="mega-rich-d">Several days, one seamless private plan.</span></a></div>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col-label">Not sure where to start?</p>
+          <p class="mega-note">Tell us what you love — coast, castles, villages or film — and we'll match you to the right day.</p>
+          <a class="mega-viewall" href="#" data-open-enquiry data-tour="Not sure yet / help me choose">Help me choose <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <a class="mega-feature" href="#">
+        <span class="mega-feature-media" style="background:linear-gradient(135deg,#8a6f4a,#5e4a30)"></span>
+        <span class="mega-feature-body">
+          <span class="mega-feature-title">Made for you</span>
+          <span class="mega-feature-meta">Bespoke private itineraries</span>
+          <span class="mega-feature-link">Start planning →</span>
+        </span>
+      </a>
+      </div></div><div class="mega-panel" id="mega-chauf" data-panel="chauf" role="region" aria-label="Chauffeur and transfers">
+      <div class="mega-inner">
+        <div class="mega-col">
+          <p class="mega-col-label">Chauffeur</p>
+          <nav class="mega-links"><a href="/chauffeur-service/">Chauffeur service</a><a href="#">Airport transfers</a><a href="#">Cruise &amp; port transfers</a><a href="#">Express / no-touring</a></nav>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col-label">Scenic transfers</p>
+          <nav class="mega-links"><a href="/york-to-edinburgh/">York ⇄ Edinburgh</a><a href="#">York ⇄ London (Cambs)</a></nav>
+        </div>
+        <a class="mega-feature" href="/york-to-edinburgh/">
+        <span class="mega-feature-media" style="background:linear-gradient(135deg,#4a5b50,#2c3a31)"></span>
+        <span class="mega-feature-body">
+          <span class="mega-feature-title">Make the journey the day</span>
+          <span class="mega-feature-meta">York → Edinburgh, the scenic way</span>
+          <span class="mega-feature-link">See the route →</span>
+        </span>
+      </a>
+      </div></div><div class="mega-panel" id="mega-why" data-panel="why" role="region" aria-label="Why us">
+      <div class="mega-inner">
+        <div class="mega-col">
+          <p class="mega-col-label">Why Expedition Yorkshire</p>
+          <nav class="mega-links"><a href="/private-yorkshire-tours/">Why private</a><a href="#">Why book direct</a><a href="#">Private pricing</a></nav>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col-label">The experience</p>
+          <nav class="mega-links"><a href="#">The vehicle</a><a href="/yorkshire-private-guide/">Meet the guides</a><a href="#">About EY</a></nav>
+        </div>
+        <a class="mega-feature" href="#">
+        <span class="mega-feature-media" style="background:linear-gradient(135deg,#5a6b54,#33402f)"></span>
+        <span class="mega-feature-body">
+          <span class="mega-feature-title">Always private</span>
+          <span class="mega-feature-meta">One price, your whole group</span>
+          <span class="mega-feature-link">Why book direct →</span>
+        </span>
+      </a>
+      </div></div><div class="mega-panel" id="mega-reviews" data-panel="reviews" role="region" aria-label="Reviews">
+      <div class="mega-inner">
+        <div class="mega-col">
+          <p class="mega-col-label">Reviews</p>
+          <nav class="mega-links"><a href="#">Guest reviews</a><a href="#">TripAdvisor</a></nav>
+        </div>
+        <div class="mega-col">
+          <p class="mega-col-label">In the press</p>
+          <nav class="mega-links">
+            <a href="#">In the press</a>
+            <a class="mega-sublink" href="#">· Harper's Bazaar</a>
+            <a class="mega-sublink" href="#">· Podcasts</a>
+          </nav>
+        </div>
+        <div class="mega-quote">
+          <span class="mega-quote-stars">★★★★★</span>
+          <p class="mega-quote-text">“The best day of our holiday.”</p>
+          <span class="mega-quote-attr">Margaret &amp; Bill · Charleston, SC</span>
+        </div>
+      </div></div></div>
+  </header>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Private day tours, transfers &amp; bespoke</p>
+      <h1>Choose Your Private Yorkshire Tour</h1>
+      <p class="hero-sub">Private day tours, scenic transfer tours and bespoke Yorkshire experiences for small groups. Private driver-guided · up to 7 guests · flexible itineraries · bespoke options available.</p>
+      <div class="hero-cta-row">
+        <button class="btn btn-primary" data-open-enquiry>Check availability</button>
+        <a class="btn btn-secondary" href="#help-me-choose">Help me choose</a>
+      </div>
+      <p class="cta-microcopy" style="color:rgba(243,241,234,0.62)">Book direct with Expedition Yorkshire for fast replies, easy customisation and personal support.</p>
+    </div>
+    <div class="hero-icons"><div class="hero-icons-inner"><div class="hero-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg><span>100% private</span></div><div class="hero-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/></svg><span>Up to 7 guests, one price</span></div><div class="hero-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Full day, ~9am–6pm</span></div><div class="hero-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c4.5-4 7-7.2 7-10.5A7 7 0 0 0 5 10.5C5 13.8 7.5 17 12 21z"/><circle cx="12" cy="10.3" r="2.4"/></svg><span>Hotel pickup in York</span></div><div class="hero-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="10.5" width="18" height="6.5" rx="1.6"/><path d="M5.5 10.5l2-3.5h9l2 3.5"/><circle cx="7.5" cy="17.5" r="1.4"/><circle cx="16.5" cy="17.5" r="1.4"/></svg><span>Expert local guides</span></div></div></div>
+  </div><div class="trust-strip">
+    <div class="trust-inner">
+      <span class="trust-item"><span class="pub">Harper's Bazaar</span> <span class="muted">Featured</span></span>
+      <span class="trust-sep"></span>
+      <span class="trust-item"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> 5-star on TripAdvisor</span>
+      <span class="trust-sep"></span>
+      <span class="trust-item"><strong>300+ tours</strong> · <strong>2,100+ guests</strong></span>
+      <span class="trust-sep"></span>
+      <span class="trust-item">Always private, never shared</span>
+    </div>
+  </div><nav class="breadcrumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Tours</li></ol></nav><section class="section-sm bg-paper"><div class="wrap">
+      <div class="jump-links">
+        <a href="#day-tours">Luxury day tours</a>
+        <a href="#transfers">Scenic transfer tours</a>
+        <a href="#london">Tours to/from London</a>
+        <a href="#help-me-choose">Bespoke tour planning</a>
+      </div></div></section><section class="section bg-stone" id="day-tours"><div class="wrap">
+      <div class="section-head"><p class="eyebrow">Coast, moors, castles &amp; countryside</p><h2 class="h2">Luxury private day tours</h2>
+      <p class="lead">Explore Yorkshire's coast, moors, market towns, castles and countryside on a private driver-guided day tour.</p></div>
+      <div class="grid grid-4"><article class="tour-card">
+      <div class="card-media"><img src="/assets/images/placeholder-landscape.svg" width="1200" height="800" alt="Whitby, Moors &amp; Coast — Moor-top roads, the steam railway at Goathland and the abbey above the harbour — a full day east." loading="lazy"><span class="tag-best">Best for: First-time visitors</span></div>
+      <div class="card-body">
+        <h3>Whitby, Moors &amp; Coast</h3>
+        <p class="card-summary">Moor-top roads, the steam railway at Goathland and the abbey above the harbour — a full day east.</p>
+        <div class="feature-tags"><span class="tag">Steam railway</span><span class="tag">Coastal harbour</span><span class="tag">Moorland</span></div>
+        <div class="price"><span class="amt">From £985</span><span class="per">per group, up to 7 · inc VAT</span></div>
+        <div class="card-cta">
+          <button class="btn btn-primary btn-sm" data-open-enquiry data-tour="Whitby, Moors &amp; Coast">Check availability</button>
+          <a class="btn btn-secondary btn-sm" href="/whitby-moors-coast/">Details</a>
+        </div>
+      </div>
+    </article><article class="tour-card">
+      <div class="card-media"><img src="/assets/images/placeholder-landscape.svg" width="1200" height="800" alt="Dales, Castles &amp; Villages — Rolling Dales countryside, historic castles and beautiful stone villages along the way." loading="lazy"><span class="tag-best">Best for: History &amp; villages</span></div>
+      <div class="card-body">
+        <h3>Dales, Castles &amp; Villages</h3>
+        <p class="card-summary">Rolling Dales countryside, historic castles and beautiful stone villages along the way.</p>
+        <div class="feature-tags"><span class="tag">Drystone country</span><span class="tag">Castles</span><span class="tag">Market towns</span></div>
+        <div class="price"><span class="amt">From £985</span><span class="per">per group, up to 7 · inc VAT</span></div>
+        <div class="card-cta">
+          <button class="btn btn-primary btn-sm" data-open-enquiry data-tour="Dales, Castles &amp; Villages">Check availability</button>
+          <a class="btn btn-secondary btn-sm" href="#">Details</a>
+        </div>
+      </div>
+    </article><article class="tour-card">
+      <div class="card-media"><img src="/assets/images/placeholder-landscape.svg" width="1200" height="800" alt="All Creatures Great &amp; Small — The Dales villages and farmsteads behind the much-loved stories and screen adaptations." loading="lazy"><span class="tag-best">Best for: TV &amp; film fans</span></div>
+      <div class="card-body">
+        <h3>All Creatures Great &amp; Small</h3>
+        <p class="card-summary">The Dales villages and farmsteads behind the much-loved stories and screen adaptations.</p>
+        <div class="feature-tags"><span class="tag">Filming locations</span><span class="tag">Dales villages</span></div>
+        <div class="price"><span class="amt">From £985</span><span class="per">per group, up to 7 · inc VAT</span></div>
+        <div class="card-cta">
+          <button class="btn btn-primary btn-sm" data-open-enquiry data-tour="All Creatures Great &amp; Small">Check availability</button>
+          <a class="btn btn-secondary btn-sm" href="#">Details</a>
+        </div>
+      </div>
+    </article><article class="tour-card">
+      <div class="card-media"><img src="/assets/images/placeholder-landscape.svg" width="1200" height="800" alt="Brontë Country — The moors, Haworth and the literary world of the Brontës — including the Wuthering Heights landscapes." loading="lazy"><span class="tag-best">Best for: Literary lovers</span></div>
+      <div class="card-body">
+        <h3>Brontë Country</h3>
+        <p class="card-summary">The moors, Haworth and the literary world of the Brontës — including the Wuthering Heights landscapes.</p>
+        <div class="feature-tags"><span class="tag">Haworth</span><span class="tag">Moorland</span><span class="tag">Literary</span></div>
+        <div class="price"><span class="amt">From £985</span><span class="per">per group, up to 7 · inc VAT</span></div>
+        <div class="card-cta">
+          <button class="btn btn-primary btn-sm" data-open-enquiry data-tour="Brontë Country">Check availability</button>
+          <a class="btn btn-secondary btn-sm" href="#">Details</a>
+        </div>
+      </div>
+    </article></div></div></section><section class="section bg-paper" id="transfers"><div class="wrap">
+      <div class="section-head"><p class="eyebrow">Travel between destinations</p><h2 class="h2">Scenic private transfer tours</h2>
+      <p class="lead">Travel between destinations in comfort while enjoying a full day of sightseeing along the way.</p></div>
+      <div class="grid grid-2"><article class="tour-card"><div class="card-media"><img src="/assets/images/placeholder-wide.svg" width="1600" height="700" alt="York to Edinburgh Scenic Transfer Tour" loading="lazy"></div>
+        <div class="card-body"><h3>York to Edinburgh Scenic Transfer Tour</h3><p class="card-summary">Turn your transfer day into part of the holiday, with sightseeing stops en route.</p>
+        <div class="price"><span class="amt">From £1,545</span><span class="per">Up to 7 guests · Full-day exclusive hire</span></div>
+        <div class="card-cta"><a class="btn btn-primary btn-sm" href="/york-to-edinburgh/">See route &amp; details</a></div></div></article><article class="tour-card"><div class="card-media"><img src="/assets/images/placeholder-wide.svg" width="1600" height="700" alt="Edinburgh to York Scenic Transfer Tour" loading="lazy"></div>
+        <div class="card-body"><h3>Edinburgh to York Scenic Transfer Tour</h3><p class="card-summary">The reverse route, with curated stops along the way.</p>
+        <div class="price"><span class="amt">From £1,545</span><span class="per">Up to 7 guests · Full-day exclusive hire</span></div>
+        <div class="card-cta"><a class="btn btn-primary btn-sm" href="/york-to-edinburgh/">See route &amp; details</a></div></div></article></div></div></section><section class="section bg-stone" id="london"><div class="wrap">
+      <div class="section-head"><p class="eyebrow">A private journey via Cambridge</p><h2 class="h2">Tours to and from London</h2>
+      <p class="lead">Turn a long travel day into part of the experience with a private journey via Cambridge.</p></div>
+      <div class="grid grid-2"><article class="tour-card"><div class="card-media"><img src="/assets/images/placeholder-wide.svg" width="1600" height="700" alt="York to London via Cambridge" loading="lazy"></div>
+        <div class="card-body"><h3>York to London via Cambridge</h3><p class="card-summary">Airport drop-off available.</p>
+        <div class="price"><span class="amt">From £1,915</span><span class="per">Up to 7 guests</span></div>
+        <div class="card-cta"><a class="btn btn-primary btn-sm" href="#">See route &amp; details</a></div></div></article><article class="tour-card"><div class="card-media"><img src="/assets/images/placeholder-wide.svg" width="1600" height="700" alt="London to York via Cambridge" loading="lazy"></div>
+        <div class="card-body"><h3>London to York via Cambridge</h3><p class="card-summary">Airport pickup available.</p>
+        <div class="price"><span class="amt">From £1,915</span><span class="per">Up to 7 guests</span></div>
+        <div class="card-cta"><a class="btn btn-primary btn-sm" href="/yorkshire-tours-from-london/">See route &amp; details</a></div></div></article></div></div></section><section class="section bg-paper" id="help-me-choose"><div class="wrap">
+      <div class="section-head center"><p class="eyebrow">Not sure which tour is right for you?</p>
+      <h2 class="h2">Help me choose</h2>
+      <p class="lead" style="margin:0 auto">Tell us where you're staying, how much time you have and what you most want to see — and we'll recommend the best private tour for your trip.</p></div>
+      <div class="compare-tiles"><button class="compare-tile" data-target="/whitby-moors-coast/">Coast &amp; sea</button><button class="compare-tile" data-target="#">Castles &amp; history</button><button class="compare-tile" data-target="#">Villages &amp; countryside</button><button class="compare-tile" data-target="#">Film &amp; literary</button><button class="compare-tile" data-target="/york-to-edinburgh/">City-to-city transfer</button></div>
+      <p class="center" style="margin-top:28px"><button class="btn btn-primary" data-open-enquiry data-tour="Not sure yet / help me choose">Help me choose</button></p></div></section><section class="section bg-forest"><div class="wrap">
+      <div class="section-head center"><p class="eyebrow" style="color:var(--accent)">Why book direct</p>
+      <h2 class="h2">Why book direct with Expedition Yorkshire?</h2>
+      <p class="lead" style="color:var(--ink-on-dark-dim);margin:0 auto">Private tours · flexible planning · expert local driver-guides · easy door-to-door pickup.</p>
+      <p style="margin-top:22px"><a class="btn btn-secondary" href="#" style="color:#F3F1EA;border-color:rgba(243,241,234,0.4)">Discover the Expedition Yorkshire difference</a></p></div>
+      <div class="wrap" style="margin-top:40px"><div class="testi-row"><figure class="testi stone"><span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+          <blockquote>“We heard their founder Andrew on a podcast and knew we wanted to try Expedition Yorkshire. It was a first-class experience every step of the way.”</blockquote>
+          <figcaption class="attr"><strong>Eric Sabatella</strong>, California</figcaption></figure></div></div></div></section><section class="section bg-stone"><div class="wrap">
+      <div class="cta-split">
+        <div class="copy">
+          <p class="eyebrow">The easy next step</p>
+          <h2>Want something more tailored?</h2>
+          <p class="lead">Tell us your dates, who's coming and what you'd love to see. We'll build a plan and reply personally — usually within 2 hours.</p>
+          <ul class="flow" style="list-style:none;padding:0;margin-top:24px">
+            <li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:14px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#324B3E" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg><span>No deposit to enquire — it's the start of a conversation, not a checkout.</span></li>
+            <li style="display:flex;gap:10px;align-items:flex-start;margin-bottom:14px"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#324B3E" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg><span>One price covers your whole group of up to seven.</span></li>
+            <li style="display:flex;gap:10px;align-items:flex-start"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#324B3E" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg><span>Prefer to talk? Call <a href="tel:+441904235928">01904 235928</a> or email <a href="mailto:andrew@expeditionyorkshire.com">andrew@expeditionyorkshire.com</a>.</span></li>
+          </ul>
+        </div>
+        <div class="enquiry">
+      <form class="enquiry-form" data-tour="Not sure yet / help me choose" novalidate>
+        <h2>Check availability</h2>
+        <p class="form-intro">Tell us a few things and we'll build a plan and reply personally — usually <strong>within 2 hours</strong>.</p>
+        <div class="field">
+          <label for="ef-name">Your name</label>
+          <input id="ef-name" name="name" type="text" autocomplete="name" placeholder="First and last name">
+          <span class="err">Please add your name.</span>
+        </div>
+        <div class="field">
+          <label for="ef-email">Email</label>
+          <input id="ef-email" name="email" type="email" autocomplete="email" placeholder="you@email.com">
+          <span class="err">Please add a valid email address.</span>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="ef-dates">Preferred dates</label>
+            <input id="ef-dates" name="dates" type="text" placeholder="e.g. 12–15 Sep, or flexible">
+          </div>
+          <div class="field">
+            <label for="ef-group">Group size</label>
+            <select id="ef-group" name="group">
+              <option value="">Select…</option>
+              <option value="1–2">1–2 guests</option>
+              <option value="3–4">3–4 guests</option>
+              <option value="5–7">5–7 guests</option>
+            </select>
+            <span class="err">Let us know your group size.</span>
+          </div>
+        </div>
+        <p class="field-help">One price covers up to 7 guests.</p>
+        <div class="field" style="margin-top:18px">
+          <label for="ef-tour">Which tour or interest</label>
+          <select id="ef-tour" name="tour"><option value="Whitby, Moors &amp; Coast">Whitby, Moors &amp; Coast</option><option value="Dales, Castles &amp; Villages">Dales, Castles &amp; Villages</option><option value="All Creatures Great &amp; Small">All Creatures Great &amp; Small</option><option value="Brontë Country">Brontë Country</option><option value="York to Edinburgh transfer">York to Edinburgh transfer</option><option value="London to York transfer">London to York transfer</option><option value="Not sure yet / help me choose" selected>Not sure yet / help me choose</option></select>
+        </div>
+        <div class="field">
+          <label for="ef-msg">Anything else? <span class="muted">(optional)</span></label>
+          <textarea id="ef-msg" name="message" placeholder="Where you're staying, what you'd love to see…"></textarea>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Check availability</button>
+        <p class="form-reply-note">We personally reply within 2 hours. No deposit to enquire.</p>
+      </form>
+      <div class="form-success" role="status" aria-live="polite">
+        <div class="tick"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#324B3E" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg></div>
+        <h3>Thank you — your enquiry is in.</h3>
+        <p>We've received your details and will reply personally, usually <strong>within 2 hours</strong>. A confirmation email is on its way to you now.</p>
+        <p class="muted">Prefer to talk? Call us on <a href="tel:+441904235928">01904 235928</a>.</p>
+      </div>
+    </div>
+      </div>
+    </div></section><section class="section cta-band"><div class="wrap">
+      <h2>Want something more tailored?</h2>
+      <div class="hero-cta-row">
+        <button class="btn btn-primary" data-open-enquiry>Check availability</button>
+        <a class="btn btn-secondary" href="tel:+441904235928" style="color:#F3F1EA;border-color:rgba(243,241,234,0.4)">Call 01904 235928</a>
+      </div>
+      <p class="bespoke">Something specific in mind? <a href="#">Plan a custom Yorkshire tour →</a></p>
+    </div></section><footer class="site-footer">
+    <div class="footer-concierge">
+      <div>
+        <div class="fc-title">Plan your private Yorkshire day</div>
+        <div class="fc-sub">Speak to the team directly — we reply personally, usually within two hours.</div>
+      </div>
+      <div class="fc-actions">
+        <div class="fc-call"><div class="k">Call us</div><div class="n"><a href="tel:+441904235928" style="color:inherit">01904 235928</a></div></div>
+        <button class="btn btn-primary" data-open-enquiry>Check availability</button>
+      </div>
+    </div>
+    <div class="wrap" style="max-width:1440px">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <img src="/assets/images/ey-logo-ondark.png" alt="Expedition Yorkshire" width="155" height="38">
+          <p>Private, driver-guided days across Yorkshire — for travellers who'd rather see it properly.</p>
+          <div style="color:var(--accent);letter-spacing:2px;font-size:15px;margin-bottom:6px">★★★★★</div>
+          <div style="font-size:14px;color:rgba(243,241,234,0.65)">Rated five stars by 2,100+ guests</div>
+        </div>
+        <div>
+          <h4>Tours</h4>
+          <ul>
+            <li><a href="/whitby-moors-coast/">Whitby, Moors &amp; Coast</a></li>
+            <li><a href="#">Dales, Castles &amp; Villages</a></li>
+            <li><a href="#">All Creatures Great &amp; Small</a></li>
+            <li><a href="#">Brontë Country</a></li>
+            <li><a href="/tours/">View all tours →</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="/chauffeur-service/">Scenic transfers</a></li>
+            <li><a href="/chauffeur-service/">Chauffeur service</a></li>
+            <li><a href="/yorkshire-tours-from-york/">Tours from York</a></li>
+            <li><a href="/yorkshire-tours-from-london/">Tours from London</a></li>
+            <li><a href="/luxury-yorkshire-day-tours/">Luxury day tours</a></li>
+            <li><a href="/private-yorkshire-tours/">Private tours</a></li>
+            <li><a href="#">Design your tour</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="/yorkshire-private-guide/">Meet the guides</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Contact &amp; FAQs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Speak to us</h4>
+          <div style="font-family:var(--font-display);font-size:23px;color:var(--ink-on-dark);margin-bottom:4px"><a href="tel:+441904235928" style="color:inherit">01904 235928</a></div>
+          <div style="font-size:14px;color:rgba(243,241,234,0.7);margin-bottom:4px"><a href="mailto:andrew@expeditionyorkshire.com" style="color:inherit">andrew@expeditionyorkshire.com</a></div>
+          <div style="font-size:13px;color:rgba(243,241,234,0.5);margin-bottom:18px">A personal reply within 2 hours</div>
+          <div class="footer-social"><span>IG</span><span>FB</span><span>in</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-trust">
+      <span class="pub">Featured in Harper's Bazaar</span>
+      <span class="sep">|</span>
+      <span><span class="stars">★★★★★</span> 5-star on TripAdvisor</span>
+      <span class="sep">|</span>
+      <span>300+ private tours · 2,100+ guests</span>
+      <span class="sep">|</span>
+      <span>Always private, never shared</span>
+    </div>
+    <div class="footer-bar">
+      <span>© 2026 Expedition Yorkshire. Always private, never shared.</span>
+      <span><a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">For trade</a></span>
+    </div>
+  </footer></main>  <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="mobile-drawer-head">
+      <img src="/assets/images/ey-logo.png" alt="Expedition Yorkshire" width="122" height="30">
+      <button class="nav-toggle" id="drawer-close" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="mobile-nav">
+      <div class="m-acc">
+      <button class="m-acc-trigger" aria-expanded="false">Tours <span class="pm">+</span></button>
+      <div class="m-acc-panel"><a href="/whitby-moors-coast/">Whitby, Moors &amp; Coast</a><a href="#">Dales, castles &amp; villages</a><a href="#">All Creatures</a><a href="#">Brontë Country</a><a href="#">Heritage &amp; abbeys</a><a href="/tours/">View all tours →</a></div></div>
+      <div class="m-acc">
+      <button class="m-acc-trigger" aria-expanded="false">Design a Tour <span class="pm">+</span></button>
+      <div class="m-acc-panel"><a href="#">Design your tour</a><a href="#">Plan your day</a><a href="#">Multi-day expeditions</a></div></div>
+      <div class="m-acc">
+      <button class="m-acc-trigger" aria-expanded="false">Chauffeur &amp; Transfers <span class="pm">+</span></button>
+      <div class="m-acc-panel"><a href="/chauffeur-service/">Chauffeur service</a><a href="#">Airport transfers</a><a href="#">Cruise &amp; port transfers</a><a href="/york-to-edinburgh/">York ⇄ Edinburgh</a><a href="#">York ⇄ London (Cambs)</a><a href="#">Express / no-touring</a></div></div>
+      <div class="m-acc">
+      <button class="m-acc-trigger" aria-expanded="false">Why Us <span class="pm">+</span></button>
+      <div class="m-acc-panel"><a href="/private-yorkshire-tours/">Why private</a><a href="#">Why book direct</a><a href="#">Private pricing</a><a href="#">The vehicle</a><a href="/yorkshire-private-guide/">Meet the guides</a><a href="#">About EY</a></div></div>
+      <div class="m-acc">
+      <button class="m-acc-trigger" aria-expanded="false">Reviews <span class="pm">+</span></button>
+      <div class="m-acc-panel"><a href="#">Guest reviews</a><a href="#">TripAdvisor</a><a href="#">In the press</a><a href="#">· Harper&#x27;s Bazaar</a><a href="#">· Podcasts</a></div></div>
+    </div>
+    <div class="mobile-drawer-foot">
+      <button class="btn btn-primary btn-block" data-open-enquiry>Check availability</button>
+      <p class="cta-microcopy" style="text-align:center;max-width:none">Book direct for fast replies and personal support.</p>
+    </div>
+  </div>
+  <div class="modal-overlay" id="enquiry-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Check availability">
+      <button class="modal-close" aria-label="Close"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="enquiry">
+      <form class="enquiry-form" data-tour="General enquiry" novalidate>
+        <h2>Check availability</h2>
+        <p class="form-intro">Tell us a few things and we'll build a plan and reply personally — usually <strong>within 2 hours</strong>.</p>
+        <div class="field">
+          <label for="ef-name">Your name</label>
+          <input id="ef-name" name="name" type="text" autocomplete="name" placeholder="First and last name">
+          <span class="err">Please add your name.</span>
+        </div>
+        <div class="field">
+          <label for="ef-email">Email</label>
+          <input id="ef-email" name="email" type="email" autocomplete="email" placeholder="you@email.com">
+          <span class="err">Please add a valid email address.</span>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="ef-dates">Preferred dates</label>
+            <input id="ef-dates" name="dates" type="text" placeholder="e.g. 12–15 Sep, or flexible">
+          </div>
+          <div class="field">
+            <label for="ef-group">Group size</label>
+            <select id="ef-group" name="group">
+              <option value="">Select…</option>
+              <option value="1–2">1–2 guests</option>
+              <option value="3–4">3–4 guests</option>
+              <option value="5–7">5–7 guests</option>
+            </select>
+            <span class="err">Let us know your group size.</span>
+          </div>
+        </div>
+        <p class="field-help">One price covers up to 7 guests.</p>
+        <div class="field" style="margin-top:18px">
+          <label for="ef-tour">Which tour or interest</label>
+          <select id="ef-tour" name="tour"><option value="Whitby, Moors &amp; Coast">Whitby, Moors &amp; Coast</option><option value="Dales, Castles &amp; Villages">Dales, Castles &amp; Villages</option><option value="All Creatures Great &amp; Small">All Creatures Great &amp; Small</option><option value="Brontë Country">Brontë Country</option><option value="York to Edinburgh transfer">York to Edinburgh transfer</option><option value="London to York transfer">London to York transfer</option><option value="Not sure yet / help me choose">Not sure yet / help me choose</option></select>
+        </div>
+        <div class="field">
+          <label for="ef-msg">Anything else? <span class="muted">(optional)</span></label>
+          <textarea id="ef-msg" name="message" placeholder="Where you're staying, what you'd love to see…"></textarea>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Check availability</button>
+        <p class="form-reply-note">We personally reply within 2 hours. No deposit to enquire.</p>
+      </form>
+      <div class="form-success" role="status" aria-live="polite">
+        <div class="tick"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#324B3E" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9"/></svg></div>
+        <h3>Thank you — your enquiry is in.</h3>
+        <p>We've received your details and will reply personally, usually <strong>within 2 hours</strong>. A confirmation email is on its way to you now.</p>
+        <p class="muted">Prefer to talk? Call us on <a href="tel:+441904235928">01904 235928</a>.</p>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="sticky-cta" id="sticky-cta">
+    <button class="btn btn-primary btn-block" data-open-enquiry>Check availability</button>
+  </div>
+  <div class="consent" id="consent" role="region" aria-label="Cookie consent">
+    <p>We use a few cookies to understand how the site is used. See our <a href="#">privacy notice</a>.</p>
+    <button class="btn btn-secondary btn-sm" data-consent="declined" style="color:#F3F1EA;border-color:rgba(243,241,234,0.4)">Decline</button>
+    <button class="btn btn-primary btn-sm" data-consent="accepted">Accept</button>
+  </div>
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
