@@ -140,6 +140,19 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 /* ---------- Header / nav ---------- */
 .site-header { position: relative; z-index: 100; }
 .site-header.is-dark { background: transparent; }
+/* Sticky-on-scroll header (toggled by JS once scrolled past the header) */
+.site-header.is-stuck {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 120;
+  background: rgba(27, 38, 31, 0.94);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 28px rgba(15, 21, 17, 0.28);
+  animation: ey-header-down 0.32s ease both;
+}
+@keyframes ey-header-down { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .site-header.is-stuck { animation: none; } }
 .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--s-6); min-height: 72px; padding: 0 56px; max-width: 1440px; margin: 0 auto; }
 .brand { display: flex; align-items: center; }
 .brand img { height: 34px; width: auto; max-width: none; }
@@ -268,10 +281,8 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .tour-card .price { display: flex; align-items: baseline; gap: 7px; margin-bottom: 16px; margin-top: auto; }
 .tour-card .price .amt { font-family: var(--font-display); font-size: 1.4rem; }
 .tour-card .price .per { font-size: 0.8125rem; color: var(--ink-muted); }
-.tour-card .card-cta { display: flex; gap: 10px; align-items: stretch; flex-wrap: wrap; }
-.tour-card .card-cta .btn { white-space: normal; }
-.tour-card .card-cta .btn-primary { flex: 1 1 auto; min-width: 0; }
-.tour-card .card-cta .btn-secondary { flex: 0 0 auto; }
+.tour-card .card-cta { display: flex; flex-direction: column; gap: 10px; }
+.tour-card .card-cta .btn { width: 100%; white-space: nowrap; }
 
 /* ---------- Tour summary block ---------- */
 .summary-block { background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: 40px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; }

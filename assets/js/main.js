@@ -186,6 +186,28 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && overlay.classList.contains("open")) close(); });
   }
 
+  /* ---------- Sticky-on-scroll site header ---------- */
+  function initStickyHeader() {
+    var header = document.getElementById("site-header");
+    if (!header) return;
+    var hero = header.closest(".hero") || header.parentNode;
+    var baseHeight = header.offsetHeight; // natural in-flow height (≈72px)
+    var stuck = false;
+    function apply(should) {
+      if (should === stuck) return;
+      stuck = should;
+      header.classList.toggle("is-stuck", stuck);
+      // Compensate the space the header vacated so content doesn't jump.
+      if (hero) hero.style.paddingTop = stuck ? baseHeight + "px" : "";
+    }
+    function onScroll() { apply(window.scrollY > baseHeight); }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () {
+      if (!stuck) baseHeight = header.offsetHeight;
+    }, { passive: true });
+    onScroll();
+  }
+
   /* ---------- Sticky mobile CTA ---------- */
   function initStickyBar() {
     var bar = $("#sticky-cta");
@@ -226,6 +248,7 @@
     initFaq();
     initForms();
     initModal();
+    initStickyHeader();
     initStickyBar();
     initConsent();
     initCompareTiles();
