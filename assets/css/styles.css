@@ -140,8 +140,11 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 /* ---------- Header / nav ---------- */
 .site-header { position: relative; z-index: 100; }
 .site-header.is-dark { background: transparent; }
-/* Sticky-on-scroll header (toggled by JS once scrolled past the header) */
-.site-header.is-stuck {
+/* Sticky-on-scroll header (toggled by JS once scrolled past the header).
+   Selector is qualified with `.hero >` so it outranks `.hero > .site-header`
+   (equal specificity would otherwise lose on source order). */
+.site-header.is-stuck,
+.hero > .site-header.is-stuck {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 120;
   background: rgba(27, 38, 31, 0.94);
