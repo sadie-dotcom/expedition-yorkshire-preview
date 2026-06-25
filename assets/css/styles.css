@@ -564,11 +564,15 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .loved-quote .attr strong { color: var(--ink-on-dark); font-weight: 600; }
 
 /* Transfer teaser split */
-.transfer-split { display: grid; grid-template-columns: 1fr 1.15fr; align-items: stretch; }
-.transfer-split .copy { padding: 96px 56px; display: flex; flex-direction: column; justify-content: center; }
+.transfer-split { display: grid; grid-template-columns: 1fr 1.15fr; align-items: center; }
+.transfer-split .copy { padding: clamp(48px,6vw,80px) clamp(28px,4vw,56px); display: flex; flex-direction: column; justify-content: center; }
 .transfer-split .copy h2 { color: var(--ink-on-dark); font-size: clamp(2rem,3.4vw,2.5rem); max-width: 16ch; }
 .transfer-split .copy .lead { color: rgba(243,241,234,0.78); max-width: 46ch; }
-.transfer-split .media { position: relative; min-height: 440px; overflow: hidden; }
+/* Cap the media to a balanced landscape band. The source video is portrait,
+   so without an explicit ratio its intrinsic height would force the panel
+   far taller than the copy. aspect-ratio keeps it proportional + CLS-safe;
+   object-fit: cover crops to the centred band (train stays in frame). */
+.transfer-split .media { position: relative; aspect-ratio: 16/10; max-height: 560px; overflow: hidden; }
 .transfer-split .media img, .transfer-split .media video { width: 100%; height: 100%; object-fit: cover; background: #0f1511; }
 .route-line { display: flex; align-items: center; gap: 14px; margin: 6px 0 30px; }
 .route-line .ep { font-family: var(--font-display); font-size: 17px; color: var(--ink-on-dark); }
@@ -614,8 +618,8 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
   .video-testi-grid { grid-template-columns: 1fr; }
   .loved-quotes { grid-template-columns: 1fr; }
   .transfer-split { grid-template-columns: 1fr; }
-  .transfer-split .copy { padding: var(--s-16) var(--s-6); }
-  .transfer-split .media { min-height: 280px; }
+  .transfer-split .copy { padding: var(--s-12) var(--s-6); }
+  .transfer-split .media { aspect-ratio: 4/3; max-height: none; }
   .contact-split { grid-template-columns: 1fr; gap: var(--s-8); }
   .footer-concierge { padding: 32px var(--s-6); }
   .footer-trust { padding: 20px var(--s-6); gap: 16px; }
