@@ -254,6 +254,12 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .aeo-inner::before { content: "In short"; display: block; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 18px; }
 .aeo p { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.3rem, 2.4vw, 1.65rem); line-height: 1.5; color: var(--ink); margin: 0; }
 .aeo p strong, .aeo p b { color: var(--ey-forest); font-weight: 600; }
+/* "In short" with a supporting image to the right (stacks on mobile). */
+.aeo-split { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; max-width: 1180px; }
+.aeo-split .aeo-inner { max-width: none; }
+.aeo-side-figure { margin: 0; border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 14px 34px rgba(31,42,36,0.16); }
+.aeo-side-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 860px) { .aeo-split { grid-template-columns: 1fr; gap: 32px; } }
 
 /* ---------- Cards grid ---------- */
 .grid { display: grid; gap: var(--s-6); }
@@ -274,8 +280,10 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 /* Tour card */
 .tour-card { background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform var(--t), box-shadow var(--t); }
 .tour-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-raised); }
-.tour-card .card-media { position: relative; aspect-ratio: 16/10; }
-.tour-card .card-media img { width: 100%; height: 100%; object-fit: cover; }
+.tour-card .card-media { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+/* Absolute-fill so a non-16/10 source (e.g. portrait) can't override the
+   container's aspect-ratio and make one card taller than its row-mates. */
+.tour-card .card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .tour-card .card-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
 .tour-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
 .tour-card .card-summary { font-size: 0.9375rem; color: var(--ink-muted); margin-bottom: 14px; }
