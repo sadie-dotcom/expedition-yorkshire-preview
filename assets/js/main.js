@@ -58,15 +58,46 @@
     return '';
   }
 
-  function resolveExperienceId(tourName, widget) {
+  function resolveExperienceId(btn, tourName, widget) {
+    // 1. Explicit per-button experience id wins (data-bokun-id or data-experience-id).
+    if (btn) {
+      var explicit = btn.getAttribute('data-bokun-id') || btn.getAttribute('data-experience-id');
+      if (explicit) return explicit.trim();
+    }
+    // 2. Fall back to mapping the button's tour name / page tour.
     var id = mapExperience(tourName);
     if (id) return id;
+    // 3. Last resort: whatever the on-page widget already points at.
     if (widget) {
       var src = widget.getAttribute('data-src') || '';
       var match = src.match(/experience-calendar\/(\d+)/);
       if (match) return match[1];
     }
     return null;
+  }
+
+  // Build a Bókun experience-calendar URL for a given experience id.
+  function bokunExperienceUrl(experienceId) {
+    return 'https://widgets.bokun.io/online-sales/f801b108-03a7-44e9-8900-425ec30f6886/experience-calendar/' + experienceId;
+  }
+
+  // (Re)render a Bókun widget for `experienceId` inside `container`.
+  // Bókun renders once into a .bokunWidget node and ignores later data-src
+  // changes, so we always remove the old widget (and any iframe it created)
+  // and insert a fresh node the loader can initialise from scratch.
+  function renderBokunExperience(container, experienceId) {
+    if (!container || !experienceId) return null;
+    // Remove any previously rendered widget + Bókun-generated markup.
+    container.querySelectorAll('.bokunWidget, iframe[src*="bokun.io"]').forEach(function (n) { n.remove(); });
+    var widget = document.createElement('div');
+    widget.className = 'bokunWidget';
+    widget.setAttribute('data-src', bokunExperienceUrl(experienceId));
+    // Mark as an explicitly-chosen experience so the heading-based remap in
+    // initBokunWidgets() leaves it alone.
+    widget.setAttribute('data-ey-explicit', '1');
+    container.appendChild(widget);
+    initBokunWidgets();
+    return widget;
   }
 
   /* ---------- Desktop full-width mega-menu ---------- */
@@ -173,6 +204,8 @@
     // Update any static bokunWidget data-srcs we find to the mapped id where possible
     document.querySelectorAll('.bokunWidget').forEach(function (el) {
       try {
+        // Leave explicitly-chosen experiences (set via a clicked button) untouched.
+        if (el.getAttribute('data-ey-explicit') === '1') return;
         var nearest = el.closest('.booking-section') || document.body;
         var heading = nearest.querySelector('.booking-intro h2') || document.querySelector('h1');
         var tourName = heading ? heading.textContent.trim() : '';
@@ -280,30 +313,21 @@
         e.preventDefault();
         var tourName = resolveTourName(btn);
         var widget = bookingShell ? bookingShell.querySelector('.bokunWidget') : null;
-        var experienceId = resolveExperienceId(tourName, widget);
+        // Experience id is resolved per clicked button (data-bokun-id first).
+        var experienceId = resolveExperienceId(btn, tourName, widget);
         if (bookingShell) {
-          // If we have a booking shell on the page, update its widget src to the requested experience
-          if (widget && experienceId) {
-            var src = widget.getAttribute('data-src') || '';
-            if (/experience-calendar\/(\d+)/.test(src)) {
-              var newSrc = src.replace(/experience-calendar\/\d+/, 'experience-calendar/' + experienceId);
-              widget.setAttribute('data-src', newSrc);
-              console.log('EY: updated bookingShell widget to', newSrc);
-            } else {
-              // fallback: create a standard Bokun URL
-              var newSrc = 'https://widgets.bokun.io/online-sales/f801b108-03a7-44e9-8900-425ec30f6886/experience-calendar/' + experienceId;
-              widget.setAttribute('data-src', newSrc);
-              console.log('EY: set bookingShell widget to', newSrc);
-            }
-            // (Re)initialise loader to ensure widget is present
-            initBokunWidgets();
+          // On-page booking shell: rebuild its widget for the requested experience
+          // so each button opens its own calendar (Bókun ignores data-src edits).
+          if (experienceId) {
+            renderBokunExperience(bookingShell, experienceId);
+            console.log('EY: rendered bookingShell experience', experienceId);
           }
           bookingShell.scrollIntoView({ behavior: "smooth", block: "start" });
           bookingShell.setAttribute("tabindex", "-1");
           try { bookingShell.focus({ preventScroll: true }); } catch (err) { bookingShell.focus(); }
           return;
         }
-        // No booking shell on page — if this tour maps to an experience, inject one into the modal
+        // No booking shell on page — if this button maps to an experience, inject one into the modal
         if (experienceId) {
           var modalShell = overlay.querySelector('.bokun-booking-shell');
           if (!modalShell) {
@@ -311,17 +335,8 @@
             modalShell.className = 'bokun-booking-shell';
             overlay.querySelector('.modal').appendChild(modalShell);
           }
-          // create or update widget inside modal
-          var mWidget = modalShell.querySelector('.bokunWidget');
-          var url = 'https://widgets.bokun.io/online-sales/f801b108-03a7-44e9-8900-425ec30f6886/experience-calendar/' + experienceId;
-          if (!mWidget) {
-            mWidget = document.createElement('div');
-            mWidget.className = 'bokunWidget';
-            modalShell.appendChild(mWidget);
-          }
-          mWidget.setAttribute('data-src', url);
-          console.log('EY: injected modal bokunWidget', url);
-          initBokunWidgets();
+          renderBokunExperience(modalShell, experienceId);
+          console.log('EY: injected modal experience', experienceId);
           // hide the enquiry form when launching the widget
           var form = $('.enquiry-form', overlay);
           if (form) form.style.display = 'none';
