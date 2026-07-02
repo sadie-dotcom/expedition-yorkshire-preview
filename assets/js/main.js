@@ -18,9 +18,54 @@
     if (!tourName) return null;
     if (/Whitby/i.test(tourName)) return '1230929';
     if (/Dales/i.test(tourName)) return '1230928';
+    if (/Bront/i.test(tourName)) return '1230928';
     if (/York to Edinburgh/i.test(tourName) || /York to Edinburgh transfer/i.test(tourName)) return '1230927';
     if (/Edinburgh to York/i.test(tourName) || /Edinburgh to York transfer/i.test(tourName)) return '1230926';
     if (/All Creatures/i.test(tourName)) return '1230925';
+    return null;
+  }
+
+  function getPageTourName() {
+    var bodyTour = document.body && document.body.getAttribute('data-page-tour');
+    if (bodyTour) return bodyTour;
+
+    var path = (window.location.pathname || '').toLowerCase();
+    if (path === '/' || path === '') return 'Whitby, Moors & Coast';
+    if (path.indexOf('/whitby-moors-coast') === 0) return 'Whitby, Moors & Coast';
+    if (path.indexOf('/luxury-yorkshire-day-tours') === 0) return 'Dales, Castles & Villages';
+    if (path.indexOf('/york-to-edinburgh') === 0) return 'York to Edinburgh Scenic Transfer';
+    if (path.indexOf('/yorkshire-tours-from-london') === 0) return 'Yorkshire Tours from London';
+    if (path.indexOf('/yorkshire-tours-from-york') === 0) return 'Yorkshire Tours from York';
+    if (path.indexOf('/private-yorkshire-tours') === 0) return 'Private Yorkshire Tours';
+
+    var title = document.title || '';
+    if (/Whitby/i.test(title)) return 'Whitby, Moors & Coast';
+    if (/Dales/i.test(title)) return 'Dales, Castles & Villages';
+    if (/All Creatures/i.test(title)) return 'All Creatures Great & Small';
+    if (/Bront/i.test(title)) return 'Brontë Country';
+    if (/York to Edinburgh/i.test(title)) return 'York to Edinburgh Scenic Transfer';
+    if (/Edinburgh to York/i.test(title)) return 'Edinburgh to York Scenic Transfer';
+
+    var heading = document.querySelector('h1');
+    if (heading) return heading.textContent.trim();
+    return '';
+  }
+
+  function resolveTourName(btn) {
+    if (btn && btn.getAttribute('data-tour')) return btn.getAttribute('data-tour');
+    var pageTour = getPageTourName();
+    if (pageTour) return pageTour;
+    return '';
+  }
+
+  function resolveExperienceId(tourName, widget) {
+    var id = mapExperience(tourName);
+    if (id) return id;
+    if (widget) {
+      var src = widget.getAttribute('data-src') || '';
+      var match = src.match(/experience-calendar\/(\d+)/);
+      if (match) return match[1];
+    }
     return null;
   }
 
@@ -233,19 +278,22 @@
     $$('[data-open-enquiry]').forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
-        var tourName = btn.getAttribute('data-tour') || document.body.getAttribute('data-page-tour') || '';
-        var experienceId = mapExperience(tourName);
+        var tourName = resolveTourName(btn);
+        var widget = bookingShell ? bookingShell.querySelector('.bokunWidget') : null;
+        var experienceId = resolveExperienceId(tourName, widget);
         if (bookingShell) {
           // If we have a booking shell on the page, update its widget src to the requested experience
-          var widget = bookingShell.querySelector('.bokunWidget');
           if (widget && experienceId) {
             var src = widget.getAttribute('data-src') || '';
             if (/experience-calendar\/(\d+)/.test(src)) {
               var newSrc = src.replace(/experience-calendar\/\d+/, 'experience-calendar/' + experienceId);
               widget.setAttribute('data-src', newSrc);
+              console.log('EY: updated bookingShell widget to', newSrc);
             } else {
               // fallback: create a standard Bokun URL
-              widget.setAttribute('data-src', 'https://widgets.bokun.io/online-sales/f801b108-03a7-44e9-8900-425ec30f6886/experience-calendar/' + experienceId);
+              var newSrc = 'https://widgets.bokun.io/online-sales/f801b108-03a7-44e9-8900-425ec30f6886/experience-calendar/' + experienceId;
+              widget.setAttribute('data-src', newSrc);
+              console.log('EY: set bookingShell widget to', newSrc);
             }
             // (Re)initialise loader to ensure widget is present
             initBokunWidgets();
@@ -272,6 +320,7 @@
             modalShell.appendChild(mWidget);
           }
           mWidget.setAttribute('data-src', url);
+          console.log('EY: injected modal bokunWidget', url);
           initBokunWidgets();
           // hide the enquiry form when launching the widget
           var form = $('.enquiry-form', overlay);
@@ -325,27 +374,40 @@
   }
 
   /* ---------- Consent bar ---------- */
-
-  function initBokunWidgets() {
-    // Update any static bokunWidget data-srcs we find to the mapped id where possible
-    document.querySelectorAll('.bokunWidget').forEach(function (el) {
-      try {
-        var nearest = el.closest('.booking-section') || document.body;
-        var heading = nearest.querySelector('.booking-intro h2') || document.querySelector('h1');
-        var tourName = heading ? heading.textContent.trim() : '';
-        var id = mapExperience(tourName) || mapExperience(document.body.getAttribute('data-page-tour'));
-        var src = el.getAttribute('data-src') || '';
-        if (id && /experience-calendar\/(\d+)/.test(src)) {
-          var newSrc = src.replace(/experience-calendar\/\d+/, 'experience-calendar/' + id);
-          el.setAttribute('data-src', newSrc);
-        }
-      } catch (e) {}
+  function initConsent() {
+    var c = document.getElementById('consent');
+    if (!c) return;
+    c.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-consent]');
+      if (!t) return;
+      var val = t.getAttribute('data-consent');
+      try { localStorage.setItem('ey.consent', val); } catch (err) {}
+      c.style.display = 'none';
     });
-    initForms();
-    initModal();
-    initStickyHeader();
-    initStickyBar();
-    initConsent();
-    initCompareTiles();
+  }
+
+  /* ---------- Compare tiles (small helper used on Tours page) ---------- */
+  function initCompareTiles() {
+    $$('.compare-tile').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = b.getAttribute('data-target');
+        if (t && t !== '#') window.location.href = t;
+      });
+    });
+  }
+
+  /* ---------- Initialize everything on DOM ready ---------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    try { initMegaMenu(); } catch (e) {}
+    try { initMobileNav(); } catch (e) {}
+    try { initFaq(); } catch (e) {}
+    try { initForms(); } catch (e) {}
+    try { initModal(); } catch (e) {}
+    try { initBokunWidgets(); } catch (e) {}
+    try { initStickyHeader(); } catch (e) {}
+    try { initStickyBar(); } catch (e) {}
+    try { initConsent(); } catch (e) {}
+    try { initCompareTiles(); } catch (e) {}
   });
+
 })();
