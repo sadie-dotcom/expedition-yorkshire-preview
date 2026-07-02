@@ -162,7 +162,7 @@
     var overlay = $("#enquiry-modal");
     if (!overlay) return;
     var lastFocus = null;
-    var bookingShell = document.getElementById("bokun-booking");
+    var bookingShell = document.querySelector(".bokun-booking-shell");
     function open(tourName) {
       lastFocus = document.activeElement;
       overlay.classList.add("open");

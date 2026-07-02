@@ -405,6 +405,21 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .bokun-booking-shell .bokunWidget iframe { width: 100% !important; min-height: 720px; max-width: 100%; border: 0; }
 .bokun-booking-shell noscript { display: block; margin-top: 12px; font-size: 0.9375rem; color: var(--ink-muted); }
 
+/* ---------- Reusable booking section ---------- */
+.booking-section { display: grid; grid-template-columns: 1fr; gap: clamp(32px, 4vw, 48px); align-items: start; }
+.booking-intro { max-width: 860px; margin: 0 auto; }
+.booking-intro .eyebrow { margin-bottom: 12px; }
+.booking-intro h2 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 16px; }
+.booking-intro .lead { max-width: 68ch; }
+.booking-widget { display: flex; justify-content: center; width: 100%; }
+.booking-widget .enquiry { max-width: 100%; width: min(100%, 1040px); padding: 40px; }
+.booking-widget .enquiry h2 { font-size: 1.7rem; margin-bottom: 8px; }
+.bokun-booking-shell { width: 100%; margin-top: 8px; overflow: hidden; border-radius: var(--radius-card); }
+.bokun-booking-shell .bokunWidget { width: 100%; max-width: 100%; min-height: 720px; }
+.bokun-booking-shell .bokunWidget > iframe,
+.bokun-booking-shell .bokunWidget iframe { width: 100% !important; min-height: 720px; max-width: 100%; border: 0; }
+.bokun-booking-shell noscript { display: block; margin-top: 12px; font-size: 0.9375rem; color: var(--ink-muted); }
+
 /* ---------- CTA band ---------- */
 .cta-band { background: var(--surface-dark); color: var(--ink-on-dark); text-align: center; }
 .cta-band h2 { color: var(--ink-on-dark); font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 26px; }
@@ -661,6 +676,7 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 @media (max-width: 860px) {
   .summary-block { grid-template-columns: 1fr; }
   .cta-split { grid-template-columns: 1fr; gap: var(--s-8); }
+  .booking-widget .enquiry { padding: 28px; }
   .bokun-booking-shell .bokunWidget,
   .bokun-booking-shell .bokunWidget > iframe,
   .bokun-booking-shell .bokunWidget iframe { min-height: 760px; }
