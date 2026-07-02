@@ -101,6 +101,23 @@
     });
   }
 
+  /* ---------- Bókun booking widget loader ---------- */
+  function initBokunWidgets() {
+    if (window.__eyBokunLoaderInjected) return;
+    var existing = document.querySelector('script[src*="BokunWidgetsLoader.js"]');
+    if (existing) {
+      window.__eyBokunLoaderInjected = true;
+      return;
+    }
+    var widget = document.querySelector('.bokunWidget');
+    if (!widget) return;
+    var script = document.createElement('script');
+    script.src = 'https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=f801b108-03a7-44e9-8900-425ec30f6886';
+    script.async = true;
+    document.head.appendChild(script);
+    window.__eyBokunLoaderInjected = true;
+  }
+
   /* ---------- Enquiry form (mock) ---------- */
   function validateForm(form) {
     var ok = true;
@@ -145,6 +162,7 @@
     var overlay = $("#enquiry-modal");
     if (!overlay) return;
     var lastFocus = null;
+    var bookingShell = document.getElementById("bokun-booking");
     function open(tourName) {
       lastFocus = document.activeElement;
       overlay.classList.add("open");
@@ -178,6 +196,12 @@
     $$('[data-open-enquiry]').forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
+        if (bookingShell) {
+          bookingShell.scrollIntoView({ behavior: "smooth", block: "start" });
+          bookingShell.setAttribute("tabindex", "-1");
+          try { bookingShell.focus({ preventScroll: true }); } catch (err) { bookingShell.focus(); }
+          return;
+        }
         open(btn.getAttribute("data-tour") || document.body.getAttribute("data-page-tour") || "");
       });
     });
@@ -246,6 +270,7 @@
     initMegaMenu();
     initMobileNav();
     initFaq();
+    initBokunWidgets();
     initForms();
     initModal();
     initStickyHeader();

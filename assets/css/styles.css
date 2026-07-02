@@ -398,6 +398,13 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .form-success h3 { font-size: 1.6rem; }
 .form-reply-note { font-size: 0.8125rem; color: var(--ink-muted); text-align: center; margin-top: 14px; }
 
+/* ---------- Bókun booking widget ---------- */
+.bokun-booking-shell { width: 100%; max-width: 100%; overflow: hidden; border-radius: var(--radius-card); }
+.bokun-booking-shell .bokunWidget { width: 100%; max-width: 100%; min-height: 720px; }
+.bokun-booking-shell .bokunWidget > iframe,
+.bokun-booking-shell .bokunWidget iframe { width: 100% !important; min-height: 720px; max-width: 100%; border: 0; }
+.bokun-booking-shell noscript { display: block; margin-top: 12px; font-size: 0.9375rem; color: var(--ink-muted); }
+
 /* ---------- CTA band ---------- */
 .cta-band { background: var(--surface-dark); color: var(--ink-on-dark); text-align: center; }
 .cta-band h2 { color: var(--ink-on-dark); font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 26px; }
@@ -654,6 +661,9 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 @media (max-width: 860px) {
   .summary-block { grid-template-columns: 1fr; }
   .cta-split { grid-template-columns: 1fr; gap: var(--s-8); }
+  .bokun-booking-shell .bokunWidget,
+  .bokun-booking-shell .bokunWidget > iframe,
+  .bokun-booking-shell .bokunWidget iframe { min-height: 760px; }
   .itin-stop { grid-template-columns: 1fr; gap: var(--s-6); }
   .itin-stop:nth-child(even) .itin-media { order: 0; }
   .practical { grid-template-columns: 1fr; gap: var(--s-6); }
