@@ -58,46 +58,63 @@
     return '';
   }
 
-  function resolveExperienceId(btn, tourName, widget) {
-    // 1. Explicit per-button experience id wins (data-bokun-id or data-experience-id).
-    if (btn) {
-      var explicit = btn.getAttribute('data-bokun-id') || btn.getAttribute('data-experience-id');
-      if (explicit) return explicit.trim();
-    }
-    // 2. Fall back to mapping the button's tour name / page tour.
-    var id = mapExperience(tourName);
-    if (id) return id;
-    // 3. Last resort: whatever the on-page widget already points at.
-    if (widget) {
-      var src = widget.getAttribute('data-src') || '';
-      var match = src.match(/experience-calendar\/(\d+)/);
-      if (match) return match[1];
-    }
-    return null;
-  }
-
-  // Build a Bókun experience-calendar URL for a given experience id.
+  // Bókun booking channel + the confirmed Booking Calendar embed pattern.
+  // Each tour has its OWN dedicated calendar widget; only the experience id
+  // changes between tours. We never mutate a widget between products.
+  var BOKUN_CHANNEL_UUID = 'f801b108-03a7-44e9-8900-425ec30f6886';
   function bokunExperienceUrl(experienceId) {
-    return 'https://widgets.bokun.io/online-sales/f801b108-03a7-44e9-8900-425ec30f6886/experience-calendar/' + experienceId;
+    return 'https://widgets.bokun.io/online-sales/' + BOKUN_CHANNEL_UUID + '/experience-calendar/' + experienceId;
   }
 
-  // (Re)render a Bókun widget for `experienceId` inside `container`.
-  // Bókun renders once into a .bokunWidget node and ignores later data-src
-  // changes, so we always remove the old widget (and any iframe it created)
-  // and insert a fresh node the loader can initialise from scratch.
-  function renderBokunExperience(container, experienceId) {
-    if (!container || !experienceId) return null;
-    // Remove any previously rendered widget + Bókun-generated markup.
-    container.querySelectorAll('.bokunWidget, iframe[src*="bokun.io"]').forEach(function (n) { n.remove(); });
-    var widget = document.createElement('div');
-    widget.className = 'bokunWidget';
-    widget.setAttribute('data-src', bokunExperienceUrl(experienceId));
-    // Mark as an explicitly-chosen experience so the heading-based remap in
-    // initBokunWidgets() leaves it alone.
-    widget.setAttribute('data-ey-explicit', '1');
-    container.appendChild(widget);
-    initBokunWidgets();
-    return widget;
+  // The dedicated calendar embedded on an individual tour page (if present).
+  function pageCalendarWidget() {
+    var shell = document.querySelector('.bokun-booking-shell:not(.bokun-modal-calendars)');
+    return shell ? shell.querySelector('.bokunWidget') : null;
+  }
+  function widgetExperienceId(widget) {
+    if (!widget) return null;
+    var match = (widget.getAttribute('data-src') || '').match(/experience-calendar\/(\d+)/);
+    return match ? match[1] : null;
+  }
+
+  // The bookable experiences, in display order, for the branded tour picker
+  // shown by the global (header / footer / sticky) "Check availability" CTAs.
+  // Each opens its OWN dedicated Bókun Booking Calendar via showModalCalendar.
+  // `enquiry: true` routes to the enquiry form instead (no dedicated calendar).
+  var PICKER_TOURS = [
+    { name: 'Whitby, Moors & Coast',            id: '1230929', blurb: 'Abbey ruins, harbour town & the wild North York Moors coast.' },
+    { name: 'Dales, Castles & Villages',        id: '1230928', blurb: 'Waterfalls, dry-stone dales & storybook stone villages.' },
+    { name: 'All Creatures Great & Small',      id: '1230925', blurb: 'Herriot filming country across the Yorkshire Dales.' },
+    { name: 'Brontë Country',                   id: '1230928', blurb: 'Haworth, the Parsonage & the wuthering moortops.' },
+    { name: 'York to Edinburgh Scenic Transfer',id: '1230927', blurb: 'A touring transfer north via the coast & Borders.' },
+    { name: 'Edinburgh to York Scenic Transfer',id: '1230926', blurb: 'The scenic return south through the Borders.' },
+    { name: 'Chauffeur & Private Transfers',    enquiry: true,  blurb: 'Bespoke routes & airport transfers — tell us your plans.' }
+  ];
+
+  // Ensure a dedicated calendar widget for `experienceId` exists inside the
+  // modal (created once, cached, never mutated) and is the only one shown.
+  function showModalCalendar(overlay, experienceId) {
+    var modal = overlay.querySelector('.modal');
+    var host = overlay.querySelector('.bokun-modal-calendars');
+    if (!host) {
+      host = document.createElement('div');
+      host.className = 'bokun-booking-shell bokun-modal-calendars';
+      modal.appendChild(host);
+    }
+    $$('.bokunWidget[data-experience]', host).forEach(function (w) { w.style.display = 'none'; });
+    var target = host.querySelector('.bokunWidget[data-experience="' + experienceId + '"]');
+    if (!target) {
+      // Confirmed embed pattern — one dedicated widget per experience id.
+      target = document.createElement('div');
+      target.className = 'bokunWidget';
+      target.setAttribute('data-experience', experienceId);
+      target.setAttribute('data-src', bokunExperienceUrl(experienceId));
+      host.appendChild(target);
+      initBokunWidgets(); // Bókun's loader picks up the newly inserted node.
+    }
+    target.style.display = '';
+    host.style.display = '';
+    return host;
   }
 
   /* ---------- Desktop full-width mega-menu ---------- */
@@ -188,46 +205,19 @@
     });
   }
 
-  /* ---------- Bókun booking widget loader ---------- */
+  /* ---------- Bókun booking widget loader ----------
+     Loads Bókun's widget loader script once. Each dedicated .bokunWidget on
+     the page (its own experience id in data-src) is then initialised by Bókun.
+     No data-src is ever rewritten — one dedicated calendar per experience. */
   function initBokunWidgets() {
-    // Ensure widgets use the correct experience id based on the page or nearby headings.
-    var mapExperience = function (tourName) {
-      if (!tourName) return null;
-      if (/Whitby/i.test(tourName)) return '1230929';
-      if (/Dales/i.test(tourName)) return '1230928';
-      if (/York to Edinburgh/i.test(tourName) || /York to Edinburgh transfer/i.test(tourName)) return '1230927';
-      if (/Edinburgh to York/i.test(tourName) || /Edinburgh to York transfer/i.test(tourName)) return '1230926';
-      if (/All Creatures/i.test(tourName)) return '1230925';
-      return null;
-    };
-
-    // Update any static bokunWidget data-srcs we find to the mapped id where possible
-    document.querySelectorAll('.bokunWidget').forEach(function (el) {
-      try {
-        // Leave explicitly-chosen experiences (set via a clicked button) untouched.
-        if (el.getAttribute('data-ey-explicit') === '1') return;
-        var nearest = el.closest('.booking-section') || document.body;
-        var heading = nearest.querySelector('.booking-intro h2') || document.querySelector('h1');
-        var tourName = heading ? heading.textContent.trim() : '';
-        var id = mapExperience(tourName) || mapExperience(document.body.getAttribute('data-page-tour'));
-        var src = el.getAttribute('data-src') || '';
-        if (id && /experience-calendar\/(\d+)/.test(src)) {
-          var newSrc = src.replace(/experience-calendar\/\d+/, 'experience-calendar/' + id);
-          el.setAttribute('data-src', newSrc);
-        }
-      } catch (e) {}
-    });
-
     if (window.__eyBokunLoaderInjected) return;
-    var existing = document.querySelector('script[src*="BokunWidgetsLoader.js"]');
-    if (existing) {
+    if (document.querySelector('script[src*="BokunWidgetsLoader.js"]')) {
       window.__eyBokunLoaderInjected = true;
       return;
     }
-    var widget = document.querySelector('.bokunWidget');
-    if (!widget) return;
+    if (!document.querySelector('.bokunWidget')) return;
     var script = document.createElement('script');
-    script.src = 'https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=f801b108-03a7-44e9-8900-425ec30f6886';
+    script.src = 'https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=' + BOKUN_CHANNEL_UUID;
     script.async = true;
     document.head.appendChild(script);
     window.__eyBokunLoaderInjected = true;
@@ -277,15 +267,101 @@
     var overlay = $("#enquiry-modal");
     if (!overlay) return;
     var lastFocus = null;
-    var bookingShell = document.querySelector(".bokun-booking-shell");
+
+    // Open the modal showing the dedicated Booking Calendar for `experienceId`.
+    function openCalendar(experienceId, tourName) {
+      lastFocus = document.activeElement;
+      var form = $(".enquiry-form", overlay);
+      var success = $(".form-success", overlay);
+      var picker = overlay.querySelector(".tour-picker");
+      if (form) form.style.display = "none";
+      if (success) success.classList.remove("show");
+      if (picker) picker.style.display = "none";
+      var label = $(".modal-tour-label", overlay);
+      if (label && tourName) label.textContent = tourName;
+      var host = showModalCalendar(overlay, experienceId);
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+      if (host) {
+        host.setAttribute("tabindex", "-1");
+        try { host.focus({ preventScroll: true }); } catch (err) { host.focus(); }
+      }
+      track("begin_checkout", { item_name: tourName || "Booking" });
+    }
+
+    // Build the branded tour-picker view once and cache it inside the modal.
+    function buildPicker() {
+      var container = overlay.querySelector(".enquiry");
+      if (!container) return null;
+      var existing = container.querySelector(".tour-picker");
+      if (existing) return existing;
+      var picker = document.createElement("div");
+      picker.className = "tour-picker";
+      picker.style.display = "none";
+      var head =
+        '<h2>Choose your experience</h2>' +
+        '<p class="form-intro">Pick a tour to see live dates and prices, or tell us what you have in mind.</p>';
+      var list = document.createElement("div");
+      list.className = "tour-picker-list";
+      PICKER_TOURS.forEach(function (t) {
+        var item = document.createElement("button");
+        item.type = "button";
+        item.className = "tour-picker-item";
+        item.setAttribute("data-tour", t.name);
+        if (t.id) item.setAttribute("data-bokun-id", t.id);
+        else item.setAttribute("data-enquiry", "true");
+        item.innerHTML =
+          '<span class="tp-text"><span class="tp-name">' + t.name + '</span>' +
+          '<span class="tp-blurb">' + t.blurb + '</span></span>' +
+          '<span class="tp-go" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></span>';
+        item.addEventListener("click", function () {
+          var name = t.name;
+          if (t.enquiry) { open(name); return; }
+          openCalendar(t.id, name);
+        });
+        list.appendChild(item);
+      });
+      picker.innerHTML = head;
+      picker.appendChild(list);
+      // Insert before the form so it reads first when shown.
+      var form = container.querySelector(".enquiry-form");
+      container.insertBefore(picker, form || null);
+      return picker;
+    }
+
+    // Open the modal showing the branded tour picker (global CTAs).
+    function openPicker() {
+      lastFocus = document.activeElement;
+      var picker = buildPicker();
+      var form = $(".enquiry-form", overlay);
+      var success = $(".form-success", overlay);
+      var calendars = overlay.querySelector(".bokun-modal-calendars");
+      if (form) form.style.display = "none";
+      if (success) success.classList.remove("show");
+      if (calendars) calendars.style.display = "none";
+      if (picker) picker.style.display = "";
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+      var first = picker && picker.querySelector(".tour-picker-item");
+      if (first) first.focus();
+      track("view_item_list", { item_list_name: "Tour picker" });
+    }
+
+    // Open the modal showing the enquiry form (no specific bookable tour).
     function open(tourName) {
+      var picker = overlay.querySelector(".tour-picker");
+      if (picker) picker.style.display = "none";
       lastFocus = document.activeElement;
       overlay.classList.add("open");
       document.body.style.overflow = "hidden";
+      // hide any calendar view a previous open may have shown
+      var calendars = overlay.querySelector(".bokun-modal-calendars");
+      if (calendars) calendars.style.display = "none";
       // reset to form view if a previous submit left success showing
       var form = $(".enquiry-form", overlay);
       var success = $(".form-success", overlay);
-      if (form && success) { form.style.display = ""; success.classList.remove("show"); }
+      if (form) form.style.display = "";
+      if (success) success.classList.remove("show");
       if (tourName && form) {
         var tourField = $('[name="tour"]', form);
         if (tourField) {
@@ -312,42 +388,53 @@
       btn.addEventListener("click", function (e) {
         e.preventDefault();
         var tourName = resolveTourName(btn);
-        var widget = bookingShell ? bookingShell.querySelector('.bokunWidget') : null;
-        // Experience id is resolved per clicked button (data-bokun-id first).
-        var experienceId = resolveExperienceId(btn, tourName, widget);
-        if (bookingShell) {
-          // On-page booking shell: rebuild its widget for the requested experience
-          // so each button opens its own calendar (Bókun ignores data-src edits).
-          if (experienceId) {
-            renderBokunExperience(bookingShell, experienceId);
-            console.log('EY: rendered bookingShell experience', experienceId);
+
+        // Is this button explicitly tied to a tour (card / "Help me choose")?
+        var explicit = btn.getAttribute("data-bokun-id") || btn.getAttribute("data-experience-id");
+        var tourAttr = btn.getAttribute("data-tour");
+        var explicitId = explicit ? explicit.trim() : (tourAttr ? mapExperience(tourAttr) : null);
+
+        // 1. Button targets a specific bookable tour.
+        if (explicitId) {
+          // If it's this page's own dedicated calendar, open it in place.
+          var pageWidgetA = pageCalendarWidget();
+          var pageIdA = widgetExperienceId(pageWidgetA);
+          if (pageWidgetA && explicitId === pageIdA) {
+            var shellA = pageWidgetA.closest(".bokun-booking-shell");
+            shellA.scrollIntoView({ behavior: "smooth", block: "start" });
+            shellA.setAttribute("tabindex", "-1");
+            try { shellA.focus({ preventScroll: true }); } catch (err) { shellA.focus(); }
+            return;
           }
-          bookingShell.scrollIntoView({ behavior: "smooth", block: "start" });
-          bookingShell.setAttribute("tabindex", "-1");
-          try { bookingShell.focus({ preventScroll: true }); } catch (err) { bookingShell.focus(); }
+          openCalendar(explicitId, tourName);
           return;
         }
-        // No booking shell on page — if this button maps to an experience, inject one into the modal
-        if (experienceId) {
-          var modalShell = overlay.querySelector('.bokun-booking-shell');
-          if (!modalShell) {
-            modalShell = document.createElement('div');
-            modalShell.className = 'bokun-booking-shell';
-            overlay.querySelector('.modal').appendChild(modalShell);
-          }
-          renderBokunExperience(modalShell, experienceId);
-          console.log('EY: injected modal experience', experienceId);
-          // hide the enquiry form when launching the widget
-          var form = $('.enquiry-form', overlay);
-          if (form) form.style.display = 'none';
-          modalShell.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          modalShell.setAttribute('tabindex', '-1');
-          try { modalShell.focus({ preventScroll: true }); } catch (err) { modalShell.focus(); }
-          overlay.classList.add('open');
-          document.body.style.overflow = 'hidden';
+
+        // 2. Button tied to a named-but-not-bookable option ("Not sure yet",
+        //    chauffeur transfers) → enquiry form.
+        if (tourAttr) { open(tourName || ""); return; }
+
+        // 3. Global CTAs (header / footer / sticky) ALWAYS open the branded
+        //    tour picker — same behaviour on every page. "Global button =
+        //    choose a tour."
+        if (btn.closest(".site-header, .site-footer, .sticky-cta")) {
+          openPicker();
           return;
         }
-        open(tourName || '');
+
+        // 4. Other generic buttons (hero / in-body on a tour page) open this
+        //    page's own dedicated calendar in place when it has one; otherwise
+        //    they fall back to the picker.
+        var pageWidget = pageCalendarWidget();
+        var pageId = widgetExperienceId(pageWidget);
+        if (pageWidget && pageId) {
+          var shell = pageWidget.closest(".bokun-booking-shell");
+          shell.scrollIntoView({ behavior: "smooth", block: "start" });
+          shell.setAttribute("tabindex", "-1");
+          try { shell.focus({ preventScroll: true }); } catch (err) { shell.focus(); }
+          return;
+        }
+        openPicker();
       });
     });
     $$(".modal-close", overlay).forEach(function (b) { b.addEventListener("click", close); });
