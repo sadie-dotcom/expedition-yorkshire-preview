@@ -13,6 +13,17 @@
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
+  // Map tour names (or button data-tour values) to Bókun experience IDs
+  function mapExperience(tourName) {
+    if (!tourName) return null;
+    if (/Whitby/i.test(tourName)) return '1230929';
+    if (/Dales/i.test(tourName)) return '1230928';
+    if (/York to Edinburgh/i.test(tourName) || /York to Edinburgh transfer/i.test(tourName)) return '1230927';
+    if (/Edinburgh to York/i.test(tourName) || /Edinburgh to York transfer/i.test(tourName)) return '1230926';
+    if (/All Creatures/i.test(tourName)) return '1230925';
+    return null;
+  }
+
   /* ---------- Desktop full-width mega-menu ---------- */
   function initMegaMenu() {
     var header = document.getElementById("site-header");
@@ -103,6 +114,32 @@
 
   /* ---------- Bókun booking widget loader ---------- */
   function initBokunWidgets() {
+    // Ensure widgets use the correct experience id based on the page or nearby headings.
+    var mapExperience = function (tourName) {
+      if (!tourName) return null;
+      if (/Whitby/i.test(tourName)) return '1230929';
+      if (/Dales/i.test(tourName)) return '1230928';
+      if (/York to Edinburgh/i.test(tourName) || /York to Edinburgh transfer/i.test(tourName)) return '1230927';
+      if (/Edinburgh to York/i.test(tourName) || /Edinburgh to York transfer/i.test(tourName)) return '1230926';
+      if (/All Creatures/i.test(tourName)) return '1230925';
+      return null;
+    };
+
+    // Update any static bokunWidget data-srcs we find to the mapped id where possible
+    document.querySelectorAll('.bokunWidget').forEach(function (el) {
+      try {
+        var nearest = el.closest('.booking-section') || document.body;
+        var heading = nearest.querySelector('.booking-intro h2') || document.querySelector('h1');
+        var tourName = heading ? heading.textContent.trim() : '';
+        var id = mapExperience(tourName) || mapExperience(document.body.getAttribute('data-page-tour'));
+        var src = el.getAttribute('data-src') || '';
+        if (id && /experience-calendar\/(\d+)/.test(src)) {
+          var newSrc = src.replace(/experience-calendar\/\d+/, 'experience-calendar/' + id);
+          el.setAttribute('data-src', newSrc);
+        }
+      } catch (e) {}
+    });
+
     if (window.__eyBokunLoaderInjected) return;
     var existing = document.querySelector('script[src*="BokunWidgetsLoader.js"]');
     if (existing) {
@@ -196,13 +233,57 @@
     $$('[data-open-enquiry]').forEach(function (btn) {
       btn.addEventListener("click", function (e) {
         e.preventDefault();
+        var tourName = btn.getAttribute('data-tour') || document.body.getAttribute('data-page-tour') || '';
+        var experienceId = mapExperience(tourName);
         if (bookingShell) {
+          // If we have a booking shell on the page, update its widget src to the requested experience
+          var widget = bookingShell.querySelector('.bokunWidget');
+          if (widget && experienceId) {
+            var src = widget.getAttribute('data-src') || '';
+            if (/experience-calendar\/(\d+)/.test(src)) {
+              var newSrc = src.replace(/experience-calendar\/\d+/, 'experience-calendar/' + experienceId);
+              widget.setAttribute('data-src', newSrc);
+            } else {
+              // fallback: create a standard Bokun URL
+              widget.setAttribute('data-src', 'https://widgets.bokun.io/online-sales/f801b108-03a7-44e9-8900-425ec30f6886/experience-calendar/' + experienceId);
+            }
+            // (Re)initialise loader to ensure widget is present
+            initBokunWidgets();
+          }
           bookingShell.scrollIntoView({ behavior: "smooth", block: "start" });
           bookingShell.setAttribute("tabindex", "-1");
           try { bookingShell.focus({ preventScroll: true }); } catch (err) { bookingShell.focus(); }
           return;
         }
-        open(btn.getAttribute("data-tour") || document.body.getAttribute("data-page-tour") || "");
+        // No booking shell on page — if this tour maps to an experience, inject one into the modal
+        if (experienceId) {
+          var modalShell = overlay.querySelector('.bokun-booking-shell');
+          if (!modalShell) {
+            modalShell = document.createElement('div');
+            modalShell.className = 'bokun-booking-shell';
+            overlay.querySelector('.modal').appendChild(modalShell);
+          }
+          // create or update widget inside modal
+          var mWidget = modalShell.querySelector('.bokunWidget');
+          var url = 'https://widgets.bokun.io/online-sales/f801b108-03a7-44e9-8900-425ec30f6886/experience-calendar/' + experienceId;
+          if (!mWidget) {
+            mWidget = document.createElement('div');
+            mWidget.className = 'bokunWidget';
+            modalShell.appendChild(mWidget);
+          }
+          mWidget.setAttribute('data-src', url);
+          initBokunWidgets();
+          // hide the enquiry form when launching the widget
+          var form = $('.enquiry-form', overlay);
+          if (form) form.style.display = 'none';
+          modalShell.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          modalShell.setAttribute('tabindex', '-1');
+          try { modalShell.focus({ preventScroll: true }); } catch (err) { modalShell.focus(); }
+          overlay.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          return;
+        }
+        open(tourName || '');
       });
     });
     $$(".modal-close", overlay).forEach(function (b) { b.addEventListener("click", close); });
@@ -244,33 +325,22 @@
   }
 
   /* ---------- Consent bar ---------- */
-  function initConsent() {
-    var bar = $("#consent");
-    if (!bar) return;
-    if (localStorage.getItem("ey-consent")) { bar.classList.add("hide"); return; }
-    $$("[data-consent]", bar).forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        try { localStorage.setItem("ey-consent", btn.getAttribute("data-consent")); } catch (e) {}
-        bar.classList.add("hide");
-      });
-    });
-  }
 
-  /* ---------- Comparison helper tiles ---------- */
-  function initCompareTiles() {
-    $$(".compare-tile").forEach(function (tile) {
-      tile.addEventListener("click", function () {
-        var target = tile.getAttribute("data-target");
-        if (target) window.location.href = target;
-      });
+  function initBokunWidgets() {
+    // Update any static bokunWidget data-srcs we find to the mapped id where possible
+    document.querySelectorAll('.bokunWidget').forEach(function (el) {
+      try {
+        var nearest = el.closest('.booking-section') || document.body;
+        var heading = nearest.querySelector('.booking-intro h2') || document.querySelector('h1');
+        var tourName = heading ? heading.textContent.trim() : '';
+        var id = mapExperience(tourName) || mapExperience(document.body.getAttribute('data-page-tour'));
+        var src = el.getAttribute('data-src') || '';
+        if (id && /experience-calendar\/(\d+)/.test(src)) {
+          var newSrc = src.replace(/experience-calendar\/\d+/, 'experience-calendar/' + id);
+          el.setAttribute('data-src', newSrc);
+        }
+      } catch (e) {}
     });
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    initMegaMenu();
-    initMobileNav();
-    initFaq();
-    initBokunWidgets();
     initForms();
     initModal();
     initStickyHeader();
