@@ -328,6 +328,14 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .step h3 { font-size: 1.15rem; margin-bottom: 6px; }
 .step p { color: var(--ink-muted); margin: 0; font-size: 0.9375rem; }
 
+/* "How it works" steps beside a supporting image (fills the right-hand space) */
+.how-split { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+.how-split .how-copy .section-head { margin-bottom: var(--s-8); }
+.how-figure { margin: 0; position: relative; border-radius: var(--radius-card); overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 18px 44px rgba(31,42,36,0.18); }
+.how-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.how-figure figcaption { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 40px 22px 16px; font-size: 0.8125rem; line-height: 1.45; color: var(--ink-on-dark); background: linear-gradient(to top, rgba(22,32,26,0.78), rgba(22,32,26,0)); }
+@media (max-width: 860px) { .how-split { grid-template-columns: 1fr; gap: 32px; } }
+
 /* ---------- Itinerary ---------- */
 .itin-stop { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-12); align-items: center; margin-bottom: var(--s-16); }
 .itin-stop:last-child { margin-bottom: 0; }
@@ -478,6 +486,12 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .jump-links { display: flex; flex-wrap: wrap; gap: 10px; }
 .jump-links a { background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: 999px; padding: 9px 18px; font-size: 0.9375rem; font-weight: 600; color: var(--ey-forest); }
 .jump-links a:hover { border-color: var(--cta); color: var(--cta); }
+
+/* Jump intro + choose-lead helper copy */
+.jump-intro { max-width: 720px; margin: 0 0 22px; }
+.jump-lead { margin: 6px 0 0; font-size: 1.0625rem; line-height: 1.6; color: var(--ink-muted); }
+.compare-lead { max-width: 640px; margin: 0 auto 26px; font-size: 1.0625rem; line-height: 1.6; color: var(--ink-muted); }
+.compare-lead.center { text-align: center; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: #16201a; color: var(--ink-on-dark-dim); }
