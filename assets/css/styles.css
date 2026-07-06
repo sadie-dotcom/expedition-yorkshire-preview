@@ -916,3 +916,39 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
   .brochure-cta-row .btn { width: 100%; }
   .group-callout { padding: 18px; gap: 14px; }
 }
+
+/* =========================================================================
+   Tour detail — meeting-morning polish pass (scoped, additive only)
+   Whitby, Moors & Coast.
+   ========================================================================= */
+
+/* ---------- Item 4: stronger, more premium hero typography ---------- */
+.tour-detail .hero-eyebrow { font-size: 0.85rem; letter-spacing: 0.2em; margin-bottom: 22px; }
+.tour-detail .hero h1 { line-height: 1.02; letter-spacing: -0.025em; }
+.tour-detail .hero-sub { font-size: clamp(1.12rem, 2vw, 1.35rem); line-height: 1.5; color: var(--ink-on-dark); max-width: 54ch; margin-bottom: 34px; }
+
+/* ---------- Item 2: consistent breadcrumb horizontal padding ---------- */
+/* .breadcrumbs sets padding:16px 0, which overrides .wrap's horizontal
+   padding and leaves the bar flush to the screen edge below max-width. */
+.tour-detail .breadcrumbs { padding-left: var(--s-6); padding-right: var(--s-6); }
+
+/* ---------- Item 3: desktop "At a glance" — show more of the tall image ---------- */
+/* Desktop only (>860px) so tablet (820px) and mobile stacks are untouched. */
+@media (min-width: 861px) {
+  .tour-detail .summary-gallery { grid-template-columns: 1.5fr 1fr; aspect-ratio: 1 / 1; }
+  .tour-detail .summary-gallery .tall img { object-position: center 42%; }
+}
+
+/* ---------- Item 5: equal-height related tour cards, aligned buttons ---------- */
+.tour-detail .grid-3 { align-items: stretch; }
+.tour-detail .grid-3 .tour-card { height: 100%; }
+.tour-detail .tour-card .card-body { flex: 1; }
+.tour-detail .tour-card .price { margin-top: auto; }
+.tour-detail .tour-card .card-cta { margin-top: 0; }
+
+/* ---------- Item 1: mobile hero icon strip — even grid alignment ---------- */
+@media (max-width: 620px) {
+  .tour-detail .hero-icons-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; align-items: start; }
+  .tour-detail .hero-icon { width: auto; font-size: 0.8125rem; align-items: flex-start; gap: 9px; line-height: 1.3; }
+  .tour-detail .hero-icon svg { width: 20px; height: 20px; margin-top: 1px; }
+}
