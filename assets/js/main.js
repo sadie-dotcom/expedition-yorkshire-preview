@@ -500,6 +500,31 @@
     onScroll();
   }
 
+  /* ---------- Price calculator (split-between-group) — Whitby page only ---------- */
+  function initPriceCalc() {
+    var calc = document.querySelector(".pf-calc");
+    if (!calc) return;
+    var total = parseFloat(calc.getAttribute("data-total")) || 985;
+    var ppEl = calc.querySelector(".pf-calc-pp");
+    var nEl = calc.querySelector(".pf-calc-n");
+    var btns = $$(".pf-calc-btn", calc);
+    if (!btns.length) return;
+    function update(size) {
+      var pp = Math.round(total / size);
+      if (ppEl) ppEl.textContent = "£" + pp;
+      if (nEl) nEl.textContent = String(size);
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.classList.remove("is-active"); x.setAttribute("aria-pressed", "false"); });
+        b.classList.add("is-active");
+        b.setAttribute("aria-pressed", "true");
+        var size = parseInt(b.getAttribute("data-size"), 10) || 7;
+        update(size);
+      });
+    });
+  }
+
   /* ---------- Consent bar ---------- */
   function initConsent() {
     var c = document.getElementById('consent');
@@ -534,6 +559,7 @@
     try { initStickyHeader(); } catch (e) {}
     try { initStickyBar(); } catch (e) {}
     try { initBookingDock(); } catch (e) {}
+    try { initPriceCalc(); } catch (e) {}
     try { initConsent(); } catch (e) {}
     try { initCompareTiles(); } catch (e) {}
   });

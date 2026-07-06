@@ -828,8 +828,7 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 @media (max-width: 860px) {
   .hl-grid { grid-template-columns: 1fr; gap: 20px; }
   .price-panel { grid-template-columns: 1fr; }
-  .price-figure { border-right: none; border-bottom: 1px solid rgba(243,241,234,0.14); padding-right: 0; padding-bottom: 24px; flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
-  .pf-per { flex-basis: 100%; }
+  .price-figure { border-right: none; border-bottom: 1px solid rgba(243,241,234,0.14); padding-right: 0; padding-bottom: 28px; align-items: flex-start; }
   .price-incl { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
@@ -841,4 +840,79 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
   .bd-actions { flex: 1; }
   .booking-dock .btn { width: 100%; }
   .bd-info { flex-shrink: 0; }
+}
+
+/* =========================================================================
+   Tour detail — final client refinements (scoped, additive only)
+   Whitby, Moors & Coast — meeting pass.
+   ========================================================================= */
+
+/* ---------- Item 3: subtly bolder hierarchy (scoped to .tour-detail) ---------- */
+.tour-detail .hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.05rem); font-weight: 600; }
+.tour-detail .section-head h2 { font-weight: 600; }
+.tour-detail .booking-intro h2,
+.tour-detail .price-detail h3,
+.tour-detail .cta-band h2 { font-weight: 600; }
+.tour-detail .price-band .section-head h2 { font-weight: 600; }
+.tour-detail .btn-primary { font-weight: 600; letter-spacing: 0.005em; }
+
+/* ---------- Item 5: interactive "split between your group" calculator ---------- */
+.pf-calc { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(243,241,234,0.14); }
+.pf-calc-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(243,241,234,0.6); margin: 0 0 12px; }
+.pf-calc-btns { display: flex; gap: 8px; margin-bottom: 16px; }
+.pf-calc-btn { flex: 1; min-width: 0; padding: 11px 0; border-radius: 9px; border: 1px solid rgba(243,241,234,0.28); background: rgba(251,250,246,0.04); color: rgba(243,241,234,0.82); font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; line-height: 1; cursor: pointer; transition: background var(--t), border-color var(--t), color var(--t), transform var(--t); }
+.pf-calc-btn:hover { border-color: rgba(201,162,75,0.6); color: var(--ink-on-dark); }
+.pf-calc-btn.is-active { background: var(--accent); border-color: var(--accent); color: var(--ey-ink); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(201,162,75,0.3); }
+.pf-calc-result { margin: 0 0 8px; font-size: 1.02rem; line-height: 1.4; color: rgba(243,241,234,0.86); }
+.pf-calc-result .pf-calc-pp { font-family: var(--font-display); font-weight: 500; font-size: 1.75rem; color: var(--accent); display: inline-block; margin-right: 4px; letter-spacing: -0.01em; }
+.pf-calc-note { margin: 0; font-size: 0.85rem; line-height: 1.5; color: rgba(243,241,234,0.62); }
+
+/* ---------- Item 6: prominent larger-group callout ---------- */
+.group-callout { grid-column: 1 / -1; margin-top: 8px; display: flex; gap: 18px; align-items: flex-start; background: linear-gradient(120deg, rgba(201,162,75,0.16), rgba(201,162,75,0.06)); border: 1px solid rgba(201,162,75,0.42); border-radius: 12px; padding: 20px 24px; }
+.group-callout-icon { flex-shrink: 0; width: 48px; height: 48px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: rgba(201,162,75,0.16); border: 1px solid rgba(201,162,75,0.42); color: var(--accent); }
+.group-callout-title { margin: 0 0 6px; font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--ink-on-dark); }
+.group-callout-text { margin: 0; font-size: 0.95rem; line-height: 1.55; color: rgba(243,241,234,0.86); }
+.group-callout-text strong { color: var(--accent); font-weight: 600; }
+.group-callout-text a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+.group-callout-text a:hover { color: var(--ink-on-dark); }
+
+/* ---------- Item 2: consistent booking checklist icons ---------- */
+.flow { list-style: none; padding: 0; margin: 24px 0 0; }
+.flow li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 15px; }
+.flow li:last-child { margin-bottom: 0; }
+.flow li svg { flex-shrink: 0; width: 22px; height: 22px; color: var(--ey-forest); margin-top: 2px; }
+.flow li span { flex: 1; }
+
+/* ---------- Items 7 & 9: connect pricing → booking ---------- */
+.price-band.pb-tight { padding-bottom: var(--s-16); }
+.section.pt-tight { padding-top: var(--s-16); }
+.booking-flow .booking-widget .enquiry { border: 1px solid var(--border-hairline); box-shadow: var(--shadow-raised); }
+
+/* ---------- Item 4: brochure CTA band ---------- */
+.brochure-band .brochure-card { display: grid; grid-template-columns: 1fr auto; gap: clamp(24px, 4vw, 56px); align-items: center; background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); box-shadow: 0 10px 30px rgba(31,42,36,0.07); padding: clamp(28px, 4vw, 48px); }
+.brochure-copy h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-bottom: 14px; }
+.brochure-copy .lead { max-width: 56ch; margin-bottom: 24px; }
+.brochure-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.brochure-note { margin: 14px 0 0; font-size: 0.875rem; color: var(--ink-muted); }
+.brochure-visual { display: flex; align-items: center; justify-content: center; }
+.brochure-visual-icon { width: 108px; height: 108px; border-radius: 20px; display: flex; align-items: center; justify-content: center; background: linear-gradient(150deg, var(--ey-stone), var(--surface)); border: 1px solid var(--border-hairline); color: var(--ey-forest); }
+
+/* ---------- Item 8: highlight card polish ---------- */
+.hl-grid { gap: clamp(24px, 3vw, 40px); }
+.hl-body { padding: 28px 30px 32px; gap: 2px; }
+.hl-body h3 { font-weight: 600; }
+.hl-num { width: 48px; height: 48px; font-size: 1.4rem; }
+
+@media (max-width: 860px) {
+  .brochure-band .brochure-card { grid-template-columns: 1fr; text-align: left; }
+  .brochure-visual { display: none; }
+  .price-band.pb-tight { padding-bottom: var(--s-12); }
+  .section.pt-tight { padding-top: var(--s-12); }
+}
+@media (max-width: 620px) {
+  .booking-flow .booking-widget .enquiry { padding: 24px 18px; }
+  .booking-intro h2 { font-size: clamp(1.7rem, 6vw, 2rem); }
+  .pf-calc-btn { font-size: 1.05rem; padding: 12px 0; }
+  .brochure-cta-row .btn { width: 100%; }
+  .group-callout { padding: 18px; gap: 14px; }
 }
