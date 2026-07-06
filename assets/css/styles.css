@@ -758,3 +758,87 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
   .hero-icons-inner { gap: 12px; }
   .hero-icon { font-size: 0.8125rem; width: calc(50% - 6px); }
 }
+
+/* =========================================================================
+   Tour detail — premium refinements (scoped to .tour-detail; additive only)
+   Client review pass — Whitby, Moors & Coast.
+   ========================================================================= */
+
+/* Stronger, more scannable section hierarchy */
+.tour-detail .section-head { margin-bottom: var(--s-16); }
+.tour-detail .section-head .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--cta); }
+.tour-detail .section-head .eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--accent); flex-shrink: 0; }
+.tour-detail .section-head.center .eyebrow { justify-content: center; }
+.tour-detail .section-head h2 { font-size: clamp(1.95rem, 3.4vw, 2.55rem); letter-spacing: -0.02em; }
+.tour-detail .section-head .lead { color: var(--ey-forest); max-width: 60ch; }
+.tour-detail .section-head.center .lead { margin-left: auto; margin-right: auto; }
+
+/* ---------- "Places that make the day" — premium highlight cards ---------- */
+.highlights-head { max-width: 66ch; }
+.hl-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 2.6vw, 34px); }
+.hl-card { position: relative; background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); overflow: hidden; box-shadow: 0 10px 30px rgba(31,42,36,0.07); display: flex; flex-direction: column; transition: transform var(--t), box-shadow var(--t); }
+.hl-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-raised); }
+.hl-media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; }
+.hl-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease; }
+.hl-card:hover .hl-media img { transform: scale(1.045); }
+.hl-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,30,24,0.28), rgba(20,30,24,0) 42%); }
+.hl-num { position: absolute; top: 16px; left: 16px; z-index: 2; width: 46px; height: 46px; border-radius: 999px; background: var(--surface-dark); color: var(--ink-on-dark); font-family: var(--font-display); font-size: 1.3rem; line-height: 1; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(15,21,17,0.4); border: 1px solid rgba(201,162,75,0.55); }
+.hl-body { padding: 26px 28px 30px; display: flex; flex-direction: column; flex: 1; }
+.hl-eyebrow { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cta); margin: 0 0 9px; }
+.hl-body h3 { font-size: clamp(1.35rem, 2.2vw, 1.55rem); margin-bottom: 10px; }
+.hl-body p { color: var(--ey-forest); margin: 0; font-size: 1rem; line-height: 1.55; }
+.highlights-foot { margin-top: var(--s-12); text-align: center; font-size: 1.0625rem; color: var(--ink-muted); }
+.highlights-foot strong { color: var(--ey-forest); font-weight: 600; }
+
+/* ---------- Premium pricing band (dark, confident) ---------- */
+.price-band { background: linear-gradient(165deg, #24352b 0%, var(--ey-ink) 88%); color: var(--ink-on-dark); }
+.price-band .section-head .eyebrow { color: var(--accent); }
+.price-band .section-head h2 { color: var(--ink-on-dark); }
+.price-band .section-head .lead { color: rgba(243,241,234,0.82); }
+.price-panel { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 4vw, 56px); align-items: stretch; background: rgba(251,250,246,0.045); border: 1px solid rgba(201,162,75,0.28); border-radius: 14px; padding: clamp(28px, 4vw, 48px); }
+.price-figure { display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(243,241,234,0.14); padding-right: clamp(20px, 3vw, 44px); }
+.pf-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(243,241,234,0.6); margin-bottom: 4px; }
+.pf-amt { font-family: var(--font-display); font-weight: 500; font-size: clamp(3.4rem, 7vw, 4.6rem); line-height: 0.92; color: var(--ink-on-dark); letter-spacing: -0.02em; }
+.pf-unit { font-size: 0.95rem; color: rgba(243,241,234,0.74); margin-top: 12px; }
+.pf-per { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(243,241,234,0.14); font-size: 0.95rem; line-height: 1.5; color: rgba(243,241,234,0.82); }
+.pf-per strong { color: var(--accent); font-weight: 600; }
+.price-detail { display: flex; flex-direction: column; justify-content: center; }
+.price-detail h3 { color: var(--ink-on-dark); font-size: 1.25rem; margin-bottom: 18px; }
+.price-incl { list-style: none; padding: 0; margin: 0 0 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 13px 24px; }
+.price-incl li { display: flex; gap: 11px; align-items: flex-start; font-size: 0.9688rem; color: rgba(243,241,234,0.9); }
+.price-incl svg { flex-shrink: 0; color: var(--accent); margin-top: 1px; }
+.price-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.price-note { font-size: 0.85rem; color: rgba(243,241,234,0.62); margin: 14px 0 0; }
+.price-callout { grid-column: 1 / -1; margin-top: 4px; background: rgba(201,162,75,0.12); border: 1px solid rgba(201,162,75,0.36); border-radius: 10px; padding: 15px 20px; font-size: 0.9063rem; line-height: 1.5; color: rgba(243,241,234,0.92); }
+.price-callout strong { color: var(--accent); font-weight: 600; }
+
+/* ---------- Sticky booking dock (desktop + mobile, non-intrusive) ---------- */
+.booking-dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 95; background: rgba(27,38,31,0.97); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid rgba(201,162,75,0.32); box-shadow: 0 -8px 30px rgba(15,21,17,0.32); transform: translateY(110%); transition: transform 260ms ease; }
+.booking-dock.show { transform: translateY(0); }
+.bd-inner { max-width: 1200px; margin: 0 auto; padding: 13px clamp(16px, 3vw, 24px); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.bd-info { display: flex; flex-direction: column; }
+.bd-price { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; color: var(--ink-on-dark); line-height: 1; }
+.bd-price span { font-family: var(--font-body); font-size: 0.8125rem; font-weight: 400; color: rgba(243,241,234,0.7); }
+.bd-sub { font-size: 0.8125rem; color: rgba(243,241,234,0.7); margin-top: 5px; }
+.bd-actions { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+.bd-reassure { font-size: 0.85rem; color: rgba(243,241,234,0.78); display: inline-flex; align-items: center; gap: 8px; }
+.bd-reassure svg { color: var(--accent); flex-shrink: 0; }
+.booking-dock .btn { white-space: nowrap; }
+
+@media (max-width: 860px) {
+  .hl-grid { grid-template-columns: 1fr; gap: 20px; }
+  .price-panel { grid-template-columns: 1fr; }
+  .price-figure { border-right: none; border-bottom: 1px solid rgba(243,241,234,0.14); padding-right: 0; padding-bottom: 24px; flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
+  .pf-per { flex-basis: 100%; }
+  .price-incl { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .tour-detail .section-head { margin-bottom: var(--s-12); }
+  .bd-inner { padding: 10px 14px; gap: 12px; }
+  .bd-price { font-size: 1.25rem; }
+  .bd-reassure { display: none; }
+  .bd-sub { display: none; }
+  .bd-actions { flex: 1; }
+  .booking-dock .btn { width: 100%; }
+  .bd-info { flex-shrink: 0; }
+}

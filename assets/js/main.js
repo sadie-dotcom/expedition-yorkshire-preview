@@ -475,6 +475,31 @@
     onScroll();
   }
 
+  /* ---------- Sticky booking dock (tour detail: price + CTA) ----------
+     Non-intrusive: appears after the hero, and hides once the live Bókun
+     booking widget scrolls into view so it never doubles up on the calendar.
+     Gated on #booking-dock so other pages are unaffected. */
+  function initBookingDock() {
+    var dock = document.getElementById("booking-dock");
+    if (!dock) return;
+    var hero = $(".hero");
+    var bookingShell = document.querySelector(".bokun-booking-shell:not(.bokun-modal-calendars)");
+    function shouldShow() {
+      var threshold = hero ? hero.offsetHeight * 0.6 : 400;
+      if (window.scrollY <= threshold) return false;
+      if (bookingShell) {
+        var r = bookingShell.getBoundingClientRect();
+        // Once the top of the booking widget is on screen, stand down.
+        if (r.top < window.innerHeight - 80) return false;
+      }
+      return true;
+    }
+    function onScroll() { dock.classList.toggle("show", shouldShow()); }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    onScroll();
+  }
+
   /* ---------- Consent bar ---------- */
   function initConsent() {
     var c = document.getElementById('consent');
@@ -508,6 +533,7 @@
     try { initBokunWidgets(); } catch (e) {}
     try { initStickyHeader(); } catch (e) {}
     try { initStickyBar(); } catch (e) {}
+    try { initBookingDock(); } catch (e) {}
     try { initConsent(); } catch (e) {}
     try { initCompareTiles(); } catch (e) {}
   });
