@@ -313,6 +313,11 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .summary-gallery { display: grid; grid-template-columns: 1.2fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; aspect-ratio: 4 / 5; }
 .summary-gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-img); display: block; }
 .summary-gallery .tall { grid-row: 1 / span 2; }
+/* York to Edinburgh gallery: portrait feature image reads better with a slightly wider left column on desktop */
+@media (min-width: 861px) {
+  .summary-gallery.summary-gallery--yte { grid-template-columns: 1.35fr 1fr; }
+  .summary-gallery.summary-gallery--yte .tall img { object-position: center 42%; }
+}
 
 /* ---------- Benefit grid ---------- */
 .benefit { background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: 28px; }
@@ -666,7 +671,9 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .footer-trust .sep { color: rgba(243,241,234,0.25); }
 .footer-trust .stars { color: var(--accent); }
 .footer-social { display: flex; gap: 10px; margin-top: 18px; }
-.footer-social span { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,241,234,0.3); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: rgba(243,241,234,0.8); }
+.footer-social span { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,241,234,0.3); display: flex; align-items: center; justify-content: center; color: rgba(243,241,234,0.8); transition: border-color .2s ease, color .2s ease; }
+.footer-social svg { width: 18px; height: 18px; display: block; }
+.footer-social span:hover { border-color: rgba(243,241,234,0.6); color: rgba(243,241,234,1); }
 
 @media (max-width: 980px) {
   .aeo-rich { grid-template-columns: 1fr; gap: 40px; }
