@@ -4,3 +4,12 @@
 
 # Image optimisation backups (originals, not served)
 **/_originals/
+
+# Large source videos — exceed GitHub's 100MB limit, kept local only (site uses the optimised/transcoded versions)
+/assets/videos/DJI_0583.MOV
+/assets/videos/DJI_0585.MOV
+/assets/videos/DJI_0595.MOV
+/assets/videos/homepage/DJI_0585.MOV
+/assets/videos/Expedition Yorkshire (2022).mp4
+/assets/videos/Expedition Yorkshire - Transfer Tours 2024.mp4
+/assets/videos/Combined Expedition Yorkshire Movie.mp4

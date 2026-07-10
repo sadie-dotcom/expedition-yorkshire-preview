@@ -313,11 +313,16 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 .summary-gallery { display: grid; grid-template-columns: 1.2fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; aspect-ratio: 4 / 5; }
 .summary-gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-img); display: block; }
 .summary-gallery .tall { grid-row: 1 / span 2; }
-/* York to Edinburgh gallery: portrait feature image reads better with a slightly wider left column on desktop */
-@media (min-width: 861px) {
-  .summary-gallery.summary-gallery--yte { grid-template-columns: 1.35fr 1fr; }
-  .summary-gallery.summary-gallery--yte .tall img { object-position: center 42%; }
-}
+
+/* ---------- Google reviews CTA ---------- */
+.google-reviews-card { max-width: 620px; margin: 0 auto; background: #fff; border: 1px solid rgba(31,42,36,0.10); border-radius: 14px; box-shadow: 0 14px 34px rgba(31,42,36,0.10); padding: 32px 28px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.google-reviews-card .google-g { width: 42px; height: 42px; display: block; }
+.google-reviews-card .stars { color: var(--accent); letter-spacing: 3px; font-size: 22px; line-height: 1; }
+.google-reviews-card .google-reviews-note { margin: 0; color: var(--ey-forest); font-size: 0.95rem; }
+.google-reviews-card .btn { margin-top: 4px; }
+/* TripAdvisor inline link — styling unchanged except hover colour */
+.ta-link { color: inherit; text-decoration: none; transition: color var(--t); }
+.ta-link:hover, .ta-link:focus-visible { color: var(--cta); }
 
 /* ---------- Benefit grid ---------- */
 .benefit { background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: 28px; }
@@ -583,8 +588,8 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 /* Featured tours — simple homepage card */
 .feat-card { background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform var(--t), box-shadow var(--t); }
 .feat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-raised); }
-.feat-card .media { position: relative; aspect-ratio: 16/10; }
-.feat-card .media img { width: 100%; height: 100%; object-fit: cover; }
+.feat-card .media { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+.feat-card .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .feat-card .body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
 .feat-card h3 { font-family: var(--font-display); font-weight: 500; font-size: 20px; margin: 0 0 6px; }
 .feat-card p { font-size: 14px; line-height: 1.5; color: var(--ink-muted); margin: 0 0 12px; }
