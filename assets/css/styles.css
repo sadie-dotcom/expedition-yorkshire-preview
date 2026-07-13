@@ -270,8 +270,8 @@ ul, ol { margin: 0 0 var(--s-4); padding-left: 1.2em; }
 /* Route card (homepage "choose how you explore") */
 .route-card { background: var(--surface-raised); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); overflow: hidden; display: flex; flex-direction: column; transition: transform var(--t), box-shadow var(--t); }
 .route-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-raised); }
-.route-card .card-media { aspect-ratio: 3/2; }
-.route-card .card-media img { width: 100%; height: 100%; object-fit: cover; }
+.route-card .card-media { position: relative; aspect-ratio: 3/2; overflow: hidden; }
+.route-card .card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .route-card .card-body { padding: 26px; flex: 1; display: flex; flex-direction: column; }
 .route-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
 .route-card p { color: var(--ink-muted); font-size: 1rem; margin-bottom: 18px; }
