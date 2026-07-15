@@ -62,6 +62,22 @@
   ]
 }
 </script>
+  <style id="ey-refine">
+.hl-grid.hl-trio{grid-template-columns:repeat(3,1fr)}
+@media(max-width:860px){.hl-grid.hl-trio{grid-template-columns:1fr}}
+.booking-flow .booking-section{grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,56px);align-items:stretch;max-width:1120px;margin:0 auto}
+.booking-flow .booking-intro{margin:0;max-width:none}
+.booking-flow .booking-widget .enquiry.bk-card{width:100%;display:flex;flex-direction:column;justify-content:center;gap:14px;text-align:center;padding:clamp(28px,3vw,44px)}
+.bk-card .bk-eyebrow{font-family:var(--font-display);font-size:1.55rem;color:var(--ink);margin:0}
+.bk-card .bk-lead{color:var(--ink-muted);font-size:.98rem;margin:0 auto 4px;max-width:36ch}
+.bk-card .btn-block{margin:2px 0 0}
+.bk-card .bk-or{display:flex;align-items:center;gap:12px;color:var(--ink-muted);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin:8px 0 2px}
+.bk-card .bk-or::before,.bk-card .bk-or::after{content:"";flex:1;height:1px;background:var(--border-hairline)}
+.bk-card .bk-phone{font-family:var(--font-display);font-size:1.55rem;color:var(--ink);text-decoration:none}
+.bk-card .bk-email{color:var(--cta);font-size:.95rem;text-decoration:none;word-break:break-word}
+.bk-card .bk-note{color:var(--ink-muted);font-size:.82rem;margin:8px 0 0}
+@media(max-width:860px){.booking-flow .booking-section{grid-template-columns:1fr}}
+  </style>
 </head>
 <body data-page-tour="London to York via Cambridge">
   <a class="skip-link" href="#main">Skip to content</a><main id="main" class="tour-detail"><div class="hero on-dark">
@@ -239,7 +255,7 @@
         <h3>Travel in style</h3><p>A spotless Mercedes-Benz V-Class with big windows and generous room for luggage.</p></div></div></div></section><section class="section bg-paper"><div class="wrap">
       <div class="section-head highlights-head"><p class="eyebrow">The journey, stop by stop</p><h2 class="h2">A travel day worth having</h2>
       <p class="lead">Your day could look something like this — a private start from London, a proper afternoon in Cambridge, then on into York. It's a guide rather than a fixed timetable: we shape the stops and the pace around your group and your onward plans.</p></div>
-      <div class="hl-grid">
+      <div class="hl-grid hl-trio">
         <article class="hl-card">
           <div class="hl-media"><span class="hl-num">1</span><img src="/assets/images/york-to-london-via-cambridge/at-a-glance-Yorkshire Dales Butter Cup Feild with Mercedes.webp" width="3024" height="4032" alt="A Mercedes-Benz V-Class in the Yorkshire countryside at the start of a private transfer to York" loading="lazy"></div>
           <div class="hl-body"><p class="hl-eyebrow">Leave the driving to us</p><h3>A private start from London</h3><p>We collect you door to door in London and head north in comfort — luggage loaded, the day yours from the very first mile.</p></div>
@@ -311,7 +327,7 @@
     </div></section><section class="section bg-stone"><div class="wrap">
       <div class="section-head"><p class="eyebrow">You might also like</p><h2 class="h2">Related private journeys</h2></div>
       <div class="grid grid-3"><article class="tour-card">
-      <div class="card-media"><img src="/assets/images/York Edinburgh Transfer Tour.webp" width="1280" height="800" alt="York to Edinburgh Transfer Tour — a private, door-to-door journey with scenic stops." loading="lazy"><span class="tag-best">Best for: Heading north</span></div>
+      <div class="card-media"><img src="/assets/images/York Edinburgh Transfer Tour.webp" width="1280" height="800" style="object-position:center 12%" alt="York to Edinburgh Transfer Tour — a private, door-to-door journey with scenic stops." loading="lazy"><span class="tag-best">Best for: Heading north</span></div>
       <div class="card-body">
         <h3>York to Edinburgh Transfer Tour</h3>
         <p class="card-summary">A private, sightseeing journey from York to Edinburgh, door to door, the scenic way.</p>
@@ -395,11 +411,14 @@
           </ul>
         </div>
         <div class="booking-widget">
-          <div class="enquiry">
-            <h2>Check availability</h2>
-            <p class="form-intro">Send us your date and route and we'll come back with a plan and a price — usually the same day.</p>
+          <div class="enquiry bk-card">
+            <p class="bk-eyebrow">Check availability</p>
+            <p class="bk-lead">Send us your date and route and we'll come back with a plan and a price — usually the same day.</p>
             <button class="btn btn-primary btn-block" data-open-enquiry data-tour="London to York via Cambridge transfer">Check availability</button>
-            <p class="cta-microcopy" style="text-align:center;margin-top:12px">Or call <a href="tel:+441904235928">01904 235928</a> · <a href="mailto:andrew@expeditionyorkshire.com">andrew@expeditionyorkshire.com</a></p>
+            <div class="bk-or"><span>or speak to us</span></div>
+            <a class="bk-phone" href="tel:+441904235928">01904 235928</a>
+            <a class="bk-email" href="mailto:andrew@expeditionyorkshire.com">andrew@expeditionyorkshire.com</a>
+            <p class="bk-note">No deposit to enquire · a real person replies, usually the same day.</p>
           </div>
         </div>
       </div>

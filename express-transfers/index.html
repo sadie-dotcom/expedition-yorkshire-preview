@@ -60,6 +60,18 @@
   ]
 }
 </script>
+  <style id="ey-refine">
+.ex-feature{display:grid;grid-template-columns:1.05fr 1fr;background:var(--surface-raised);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-raised);border:1px solid var(--border-hairline)}
+.ex-feature-media{position:relative;min-height:340px}
+.ex-feature-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ex-feature-media::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(31,42,36,0)55%,rgba(31,42,36,0.12))}
+.ex-feature-body{padding:clamp(28px,4vw,54px);display:flex;flex-direction:column;justify-content:center;gap:16px}
+.ex-feature-body .eyebrow{color:var(--cta)}
+.ex-feature-body h2{margin:0}
+.ex-feature-body p{margin:0;color:var(--ink);max-width:48ch}
+.ex-feature-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+@media(max-width:860px){.ex-feature{grid-template-columns:1fr}.ex-feature-media{min-height:230px}}
+  </style>
 </head>
 <body data-page-tour="">
   <a class="skip-link" href="#main">Skip to content</a><main id="main" class="tour-detail"><div class="hero on-dark">
@@ -231,7 +243,16 @@
           <li>Corporate &amp; group travel</li>
           <li>Anything you need — just ask</li>
         </ul></div>
-      </div></div></section><section class="section bg-stone"><div class="wrap"><div class="aeo-split"><div class="aeo-inner"><p><strong>Prefer to make the journey the day?</strong> If you'd rather turn the trip itself into a private day out — with scenic stops and an expert guide — take a look at our scenic transfer tours instead. Same private vehicle, same fixed group price, but with the countryside built in.</p><p style="margin-bottom:0"><a class="btn btn-primary" href="/transfers/york-to-edinburgh/">York to Edinburgh transfer tour</a> <a class="btn btn-secondary" href="/tours/york-to-london-via-cambridge/">York to London via Cambridge</a></p></div><figure class="aeo-side-figure"><img src="/assets/images/express-transfers/hero-Express Transfer.webp" width="5712" height="4284" alt="A private Mercedes-Benz V-Class ready for an express transfer" loading="lazy"></figure></div></div></section><section class="section bg-paper"><div class="wrap">
+      </div></div></section><section class="section bg-stone"><div class="wrap">
+      <div class="ex-feature">
+        <div class="ex-feature-media"><img src="/assets/images/express-transfers/hero-Express Transfer.webp" width="5712" height="4284" alt="A private Mercedes-Benz V-Class ready for an express transfer" loading="lazy"></div>
+        <div class="ex-feature-body">
+          <p class="eyebrow">Two ways to travel</p>
+          <h2 class="h2">Prefer to make the journey the day?</h2>
+          <p>If you'd rather turn the trip itself into a private day out — with scenic stops and an expert guide — take a look at our scenic transfer tours. Same private vehicle, same fixed group price, with the Yorkshire countryside built in.</p>
+          <div class="ex-feature-cta"><a class="btn btn-primary" href="/transfers/york-to-edinburgh/">York to Edinburgh transfer tour</a><a class="btn btn-secondary" href="/tours/york-to-london-via-cambridge/">York to London via Cambridge</a></div>
+        </div>
+      </div></div></section><section class="section bg-paper"><div class="wrap">
       <div class="section-head center"><p class="eyebrow">Good to know</p><h2 class="h2">Express transfers — your questions</h2></div>
       <div class="faq"><div class="faq-item open">
           <button class="faq-q" aria-expanded="true"><span>What exactly is an express transfer?</span><span class="pm">–</span></button>
