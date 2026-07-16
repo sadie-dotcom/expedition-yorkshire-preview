@@ -5,3 +5,18 @@
 /whitby-moors-coast     /tours/whitby-moors-coast/       301
 /york-to-edinburgh/     /transfers/york-to-edinburgh/    301
 /york-to-edinburgh      /transfers/york-to-edinburgh/    301
+
+
+# Batch 2026-07: tour renames + transfer moves
+/tours/hill-valley-castle/	/tours/yorkshire-dales-castles/	301
+/tours/hill-valley-castle	/tours/yorkshire-dales-castles/	301
+/tours/bronte-tour/	/tours/bronte-country/	301
+/tours/bronte-tour	/tours/bronte-country/	301
+/tours/edinburgh-to-york/	/transfers/edinburgh-to-york/	301
+/tours/edinburgh-to-york	/transfers/edinburgh-to-york/	301
+/tours/york-to-london-via-cambridge/	/transfers/york-to-london-via-cambridge/	301
+/tours/york-to-london-via-cambridge	/transfers/york-to-london-via-cambridge/	301
+/tours/london-to-york-via-cambridge/	/transfers/london-to-york-via-cambridge/	301
+/tours/london-to-york-via-cambridge	/transfers/london-to-york-via-cambridge/	301
+/tours/york-to-edinburgh/	/transfers/york-to-edinburgh/	301
+/tours/york-to-edinburgh	/transfers/york-to-edinburgh/	301
