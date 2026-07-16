@@ -484,6 +484,7 @@
     if (!dock) return;
     var hero = $(".hero");
     var bookingShell = document.querySelector(".bokun-booking-shell:not(.bokun-modal-calendars)");
+    var footer = document.querySelector("footer.site-footer") || document.querySelector(".site-footer") || document.querySelector("footer");
     function shouldShow() {
       var threshold = hero ? hero.offsetHeight * 0.6 : 400;
       if (window.scrollY <= threshold) return false;
@@ -491,6 +492,11 @@
         var r = bookingShell.getBoundingClientRect();
         // Once the top of the booking widget is on screen, stand down.
         if (r.top < window.innerHeight - 80) return false;
+      }
+      // Once the footer scrolls into view, stand down so its links stay accessible.
+      if (footer) {
+        var fr = footer.getBoundingClientRect();
+        if (fr.top < window.innerHeight) return false;
       }
       return true;
     }

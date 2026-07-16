@@ -49,6 +49,15 @@
 .cr-feat-list li{display:flex;gap:10px;align-items:flex-start;color:var(--ink);font-size:.96rem}
 .cr-feat-list li svg{flex-shrink:0;margin-top:3px;color:var(--ey-forest)}
 @media(max-width:860px){.cr-feat{grid-template-columns:1fr}.cr-feat-media{min-height:240px}}
+.qa-band{position:relative;isolation:isolate;border-radius:16px;overflow:hidden;min-height:400px;display:flex;align-items:center}
+.qa-band-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
+.qa-band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(31,42,36,.92) 0%,rgba(31,42,36,.8) 46%,rgba(31,42,36,.42) 100%);z-index:-1}
+.qa-band-inner{padding:clamp(34px,5vw,64px);max-width:600px}
+.qa-band-badge{margin:0;font:600 .74rem/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+.qa-band-badge::before{content:"";width:26px;height:2px;background:var(--accent)}
+.qa-band-lead{margin:16px 0 0;font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.25;letter-spacing:-.015em;color:var(--ink-on-dark)}
+.qa-band-text{margin:16px 0 0;color:rgba(243,241,234,.86);line-height:1.72;max-width:56ch}
+@media(max-width:640px){.qa-band::after{background:linear-gradient(180deg,rgba(31,42,36,.86),rgba(31,42,36,.86))}}
   </style>
 </head>
 
@@ -193,7 +202,7 @@
       <span class="trust-sep"></span>
       <span class="trust-item">Always private, never shared</span>
     </div>
-  </div><nav class="breadcrumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/chauffeur-service/">Chauffeur &amp; Transfers</a></li><li aria-current="page">Cruise &amp; port transfers</li></ol></nav><section class="section bg-paper"><div class="wrap"><div class="aeo-split"><div class="aeo-inner"><p>Whether you're joining a ship or heading home after a voyage, our private port transfers make the connection effortless. A spotless Mercedes-Benz V-Class collects your group door to door, we plan the timing around your sailing and the tides of traffic, and there's generous space for every case and carry-on. One fixed price covers the whole group — so the journey to the quayside is as calm as the cruise itself.</p></div><figure class="aeo-side-figure"><img src="/assets/images/Runswick bay.webp" width="4032" height="3024" alt="The coast of northern England near a cruise port" loading="lazy"></figure></div></div></section><section class="section bg-stone"><div class="wrap">
+  </div><nav class="breadcrumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/chauffeur-service/">Chauffeur &amp; Transfers</a></li><li aria-current="page">Cruise &amp; port transfers</li></ol></nav><section class="section bg-paper"><div class="wrap"><div class="qa-band"><img class="qa-band-img" src="/assets/images/royal Yaht Brit Edin.webp" width="4284" height="5712" alt="The Royal Yacht Britannia at its Edinburgh berth" loading="lazy"><div class="qa-band-inner"><p class="qa-band-badge">In short</p><p class="qa-band-lead">From your door to the quayside, timed around your sailing — one fixed price for the whole group, and never a shared seat.</p><p class="qa-band-text">Whether you’re joining a ship or heading home after a voyage, our private port transfers make the connection effortless. A spotless Mercedes-Benz V-Class collects your group door to door, we plan the timing around your sailing and the tides of traffic, and there’s generous space for every case and carry-on. One fixed price covers the whole group — so the journey to the quayside is as calm as the cruise itself.</p></div></div></div></section><section class="section bg-stone"><div class="wrap">
       <div class="cr-feat">
         <div class="cr-feat-media"><img src="/assets/images/Eastcoasttransferfamily.webp" width="5712" height="4284" alt="A family arriving for a private cruise port transfer on the north-east coast" loading="lazy"></div>
         <div class="cr-feat-body">
