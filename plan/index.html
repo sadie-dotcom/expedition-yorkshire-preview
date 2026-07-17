@@ -36,6 +36,18 @@
   ]
 }
 </script>
+  <style id="ey-page">
+.splitband{display:grid;grid-template-columns:1.3fr .82fr;gap:clamp(28px,4vw,60px);align-items:center}
+.splitband.rev{grid-template-columns:.82fr 1.3fr}
+.splitband .sb-body .eyebrow{color:var(--cta)}
+.splitband .sb-body h2{margin:0 0 14px}
+.splitband .sb-body p{margin:0 0 14px;color:var(--ink);max-width:58ch}
+.splitband .sb-body p:last-child{margin-bottom:0}
+.sb-media{border-radius:14px;overflow:hidden;box-shadow:var(--shadow-raised);border:1px solid var(--border-hairline);aspect-ratio:4/5;max-width:400px;width:100%}
+.splitband:not(.rev) .sb-media{margin-left:auto}
+.sb-media img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:820px){.splitband,.splitband.rev{grid-template-columns:1fr}.sb-media{max-width:none;aspect-ratio:16/10;margin:0 auto}.splitband.rev .sb-media{order:-1}}
+  </style>
 </head>
 <body data-page-tour="">
   <a class="skip-link" href="#main">Skip to content</a><main id="main" class="tour-detail"><div class="hero on-dark">
@@ -189,10 +201,15 @@
       <div class="card-media"><img src="/assets/images/Blue Bank North York Moors.webp" width="5712" height="4284" alt="The road over Blue Bank in the North York Moors" loading="lazy"><span class="tag-best">Pace &amp; walking</span></div>
       <div class="card-body"><h3>Pace, Walking &amp; Access</h3><p class="card-summary">How active each day is, driving times and how we make tours easy for every generation.</p>
         <div class="card-cta"><a class="btn btn-primary btn-sm" href="/plan/pace-and-walking/">Read the guide</a></div></div>
-    </article></div></div></section><section class="section bg-paper"><div class="wrap"><div class="feat"><div class="feat-media"><img src="/assets/images/Yorkshire Dales Multi generation.webp" width="4284" height="5712" alt="A family designing their private Yorkshire tour together" loading="lazy"></div><div class="feat-body"><p class="eyebrow">Make it yours</p><h2 class="h2">Turn inspiration into your own itinerary</h2><p>Once you have a feel for what you would like, we will turn it into a private day built entirely around you — your interests, your pace, your pick-up. Nothing is fixed and everything is flexible, so the day feels less like a tour and more like exploring with a knowledgeable friend.</p><div style="margin-top:6px"><a class="btn btn-primary" href="/design-your-tour/">Design your tour</a></div></div></div></div></section><section class="section bg-paper"><div class="wrap">
+    </article></div></div></section><section class="section bg-paper"><div class="wrap"><div class="splitband">
+      <div class="sb-body"><p class="eyebrow">Make it yours</p><h2 class="h2">Turn inspiration into your own itinerary</h2>
+      <p>Once you have a feel for what you would like, we will turn it into a private day built entirely around you — your interests, your pace, your pick-up. Nothing is fixed and everything is flexible, so the day feels less like a tour and more like exploring with a knowledgeable friend.</p>
+      <div style="margin-top:2px"><a class="btn btn-primary" href="/design-your-tour/">Design your tour</a></div></div>
+      <div class="sb-media"><img src="/assets/images/Any weather fun.webp" width="3868" height="5157" alt="Guests enjoying a private Yorkshire tour whatever the weather" loading="lazy"></div>
+      </div></div></section><section class="section bg-paper"><div class="wrap">
       <div class="section-head"><p class="eyebrow">Ready to explore</p><h2 class="h2">Popular private days out</h2></div>
       <div class="grid grid-3"><article class="tour-card">
-      <div class="card-media"><img src="/assets/images/Whitby Abbey.webp" width="5712" height="4284" alt="Whitby Abbey above the harbour on a private Yorkshire coast tour" loading="lazy"><span class="tag-best">Coast &amp; sea</span></div>
+      <div class="card-media"><img src="/assets/images/Whitby Moor Coast Cliff Tour.webp" width="3024" height="4032" alt="The Yorkshire coast and moors on a private Whitby tour" loading="lazy"><span class="tag-best">Coast &amp; sea</span></div>
       <div class="card-body"><h3>Whitby, Moors &amp; Coast</h3><p class="card-summary">Steam trains, heather moors and the dramatic Yorkshire coast in one private day.</p><div class="feature-tags"><span class="tag">Coast</span><span class="tag">Moors</span></div>
         <div class="card-cta"><button class="btn btn-primary btn-sm" data-open-enquiry data-tour="Whitby, Moors &amp; Coast">Check availability</button><a class="btn btn-secondary btn-sm" href="/tours/whitby-moors-coast/">Details</a></div></div>
     </article><article class="tour-card">
