@@ -1,6 +1,6 @@
 # Expedition Yorkshire — Email Signature
 
-A set of premium, brand-matched HTML email signatures for **Andrew Ward, Founder**. Built to mirror the new Expedition Yorkshire website — the "Quiet Moor" palette, Georgia/serif display type, gold accents and generous whitespace — while staying maximally compatible with Outlook.
+A set of premium, brand-matched HTML email signatures for **Andrew Ward**. Built to mirror the new Expedition Yorkshire website — the "Quiet Moor" palette, Georgia/serif display type, gold accents and generous whitespace — while staying maximally compatible with Outlook.
 
 > ## ⭐ Ready to go live? Use the `deploy/` folder
 > **`deploy/`** contains the **production-ready** files. Image paths currently point at the **Cloudflare
