@@ -59,14 +59,41 @@
 .spec{background:var(--surface-raised);border:1px solid var(--border-hairline);border-radius:14px;padding:26px 22px;box-shadow:var(--shadow-soft);text-align:center}
 .spec .n{font-family:var(--font-display);font-size:2.1rem;color:var(--ey-forest);line-height:1}
 .spec .l{margin-top:8px;color:var(--ink-muted);font-size:.92rem;line-height:1.45}
-.press-logos{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:960px;margin:0 auto}
-.press-logo{display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--surface-raised);border:1px solid var(--border-hairline);border-radius:14px;padding:22px 26px;box-shadow:var(--shadow-soft);min-width:180px;text-align:center}
-.press-logo .pl-name{font-family:var(--font-display);font-size:1.15rem;color:var(--ink)}
-.press-logo .pl-kind{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.press-logos{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1060px;margin:0 auto;align-items:stretch}
+.press-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--surface-raised);border:1px solid var(--border-hairline);border-radius:14px;padding:22px 16px;box-shadow:var(--shadow-soft);text-align:center;min-width:0}
+.press-logo .pl-name{font-family:var(--font-display);font-size:1.08rem;color:var(--ink);line-height:1.2}
+.press-logo .pl-kind{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted)}
+.find-3col{grid-template-columns:repeat(3,1fr)}
 .contact-line{text-align:center;color:var(--ink-muted);font-size:.95rem;margin:22px auto 0;max-width:60ch;line-height:1.6}
 .contact-line a{color:var(--cta)}
-@media(max-width:900px){.path-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}.spec-grid{grid-template-columns:1fr;max-width:360px}}
-@media(max-width:820px){.grid.g2{grid-template-columns:1fr}.trade-work{grid-template-columns:1fr;max-width:440px}}
+/* In-short intro variants (distinct per page) */
+.intro-rev{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(28px,4vw,56px);align-items:center;max-width:1180px;margin:0 auto}
+.intro-rev .ir-figure{margin:0;border-radius:10px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow-raised)}
+.intro-rev .ir-figure img{width:100%;height:100%;object-fit:cover;display:block}
+.intro-rev .ir-body{max-width:60ch}
+.intro-label{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cta);margin:0 0 14px}
+.intro-rev .ir-body p{font-size:1.12rem;line-height:1.7;color:var(--ey-forest);margin:0}
+.intro-panel{display:grid;grid-template-columns:1.05fr .95fr;max-width:1120px;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-raised)}
+.intro-panel .ip-body{background:var(--ey-forest);padding:clamp(28px,4vw,46px);display:flex;flex-direction:column;justify-content:center}
+.intro-panel .ip-body .intro-label{color:var(--accent)}
+.intro-panel .ip-body p{font-size:1.1rem;line-height:1.7;color:rgba(243,241,234,.9);margin:0}
+.intro-panel .ip-figure{margin:0;overflow:hidden}
+.intro-panel .ip-figure img{width:100%;height:100%;min-height:320px;object-fit:cover;display:block}
+.intro-stack{max-width:1180px;margin:0 auto;text-align:center}
+.intro-stack .is-lead{font-family:var(--font-display);font-weight:400;font-size:clamp(1.3rem,2.4vw,1.72rem);line-height:1.5;color:var(--ink);max-width:44ch;margin:0 auto 30px}
+.intro-stack .is-figure{margin:0;border-radius:12px;overflow:hidden;aspect-ratio:21/8;box-shadow:var(--shadow-raised)}
+.intro-stack .is-figure img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+.intro-frame{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,4vw,52px);align-items:center;max-width:1160px;margin:0 auto}
+.intro-frame .if-body{background:var(--surface-raised);border:1px solid var(--border-hairline);border-left:4px solid var(--accent);border-radius:12px;padding:clamp(26px,3.4vw,40px);box-shadow:var(--shadow-soft)}
+.intro-frame .if-body p{font-size:1.08rem;line-height:1.7;color:var(--ey-forest);margin:0}
+.intro-frame .if-figure{position:relative;margin:0;border-radius:12px;overflow:hidden;aspect-ratio:3/4;box-shadow:var(--shadow-raised)}
+.intro-frame .if-figure img{width:100%;height:100%;object-fit:cover;display:block}
+.intro-frame .if-chip{position:absolute;left:14px;bottom:14px;background:rgba(31,42,36,.82);color:var(--ink-on-dark);font-size:.72rem;letter-spacing:.06em;padding:6px 12px;border-radius:20px}
+@media(max-width:900px){.path-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}.spec-grid{grid-template-columns:1fr;max-width:360px}.press-logos{grid-template-columns:repeat(3,1fr);max-width:560px}.find-3col{grid-template-columns:1fr}}
+@media(max-width:860px){.intro-rev{grid-template-columns:1fr;gap:26px}.intro-rev .ir-figure{order:-1}.intro-frame{grid-template-columns:1fr;gap:24px}.intro-frame .if-figure{aspect-ratio:4/3;order:-1}}
+@media(max-width:820px){.grid.g2{grid-template-columns:1fr}.trade-work{grid-template-columns:1fr;max-width:440px}.intro-panel{grid-template-columns:1fr}.intro-panel .ip-figure img{min-height:240px}}
+@media(max-width:700px){.intro-stack .is-figure{aspect-ratio:4/3}}
+@media(max-width:560px){.press-logos{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
 
@@ -155,7 +182,7 @@
       <div class="mega-inner">
         <div class="mega-col">
           <p class="mega-col-label">Why Expedition Yorkshire</p>
-          <nav class="mega-links"><a href="/why-private/">Why private</a><a href="/why-book-direct/">Why book direct</a><a href="/private-tour-pricing/">Private pricing</a><a href="/travel-trade/agents-and-dmcs/">For travel trade</a></nav>
+          <nav class="mega-links"><a href="/why-private/">Why private</a><a href="/why-book-direct/">Why book direct</a><a href="/private-tour-pricing/">Private pricing</a><a href="/travel-trade/">For travel trade</a></nav>
         </div>
         <div class="mega-col">
           <p class="mega-col-label">The experience</p>
@@ -178,7 +205,7 @@
         <div class="mega-col">
           <p class="mega-col-label">In the press</p>
           <nav class="mega-links">
-            <a href="#">In the press</a>
+            <a href="/press/">In the press</a>
             <a class="mega-sublink" href="#">· Harper's Bazaar</a>
             <a class="mega-sublink" href="#">· Podcasts</a>
           </nav>
@@ -211,7 +238,7 @@
       <span class="trust-sep"></span>
       <span class="trust-item">Always private, never shared</span>
     </div>
-  </div><nav class="breadcrumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Press</li></ol></nav><section class="section bg-paper"><div class="wrap"><div class="aeo-split"><div class="aeo-inner"><p>Expedition Yorkshire is a York-based private tour company offering driver-guided days across the Yorkshire Dales, the North York Moors, the coast and historic York, as well as scenic city-to-city transfers through Northern England. Founded by Andrew Ward, we specialise in immersive, quintessentially English experiences for discerning international visitors &mdash; and we are always glad to share stories, expertise and imagery with the press.</p></div><figure class="aeo-side-figure"><img src="/assets/images/Castleguests.webp" width="1200" height="1600" alt="Guests enjoying a private, guided Expedition Yorkshire experience at a Yorkshire castle" loading="lazy"></figure></div></div></section><section class="section bg-stone"><div class="wrap">
+  </div><nav class="breadcrumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Press</li></ol></nav><section class="section bg-paper"><div class="wrap"><div class="intro-rev"><figure class="ir-figure"><img src="/assets/images/Black V Class Dales Summer window refelction.webp" width="4032" height="3024" alt="A black Mercedes-Benz V-Class amid the Yorkshire Dales on a bright summer day" loading="lazy"></figure><div class="ir-body"><p class="intro-label">In short</p><p>Expedition Yorkshire is a York-based private tour company offering driver-guided days across the Yorkshire Dales, the North York Moors, the coast and historic York, as well as scenic city-to-city transfers through Northern England. Founded by Andrew Ward, we specialise in immersive, quintessentially English experiences for discerning international visitors &mdash; and we are always glad to share stories, expertise and imagery with the press.</p></div></div></div></section><section class="section bg-stone"><div class="wrap">
       <div class="section-head center"><p class="eyebrow">As featured in</p><h2 class="h2">Trusted by the people who cover travel</h2></div>
       <div class="press-logos">
         <div class="press-logo"><span class="pl-name">Harper&rsquo;s Bazaar</span><span class="pl-kind">Featured</span></div>
@@ -221,7 +248,7 @@
         <div class="press-logo"><span class="pl-name">The Grand, York</span><span class="pl-kind">Partner</span></div>
       </div></div></section><section class="section bg-paper"><div class="wrap">
       <div class="section-head"><p class="eyebrow">Coverage &amp; features</p><h2 class="h2">Where you&rsquo;ll find us</h2></div>
-      <div class="hl-grid">
+      <div class="hl-grid find-3col">
         <article class="hl-card"><div class="hl-media"><img src="/assets/images/Castle Howard.webp" width="4032" height="3024" alt="A grand Yorkshire stately home, the kind of storybook England featured in Harper’s Bazaar" loading="lazy"></div><div class="hl-body"><h3>Harper&rsquo;s Bazaar</h3><p>Expedition Yorkshire has been featured in Harper&rsquo;s Bazaar for its private, storybook take on the English countryside.</p></div></article>
         <article class="hl-card"><div class="hl-media"><img src="/assets/images/Aysgarth.webp" width="5712" height="4284" alt="Aysgarth Falls in the Yorkshire Dales, discussed on the UK Travel Planning Podcast" loading="lazy"></div><div class="hl-body"><h3>UK Travel Planning Podcast &mdash; Ep. 64</h3><p>Founder Andrew Ward introduces Expedition Yorkshire and the case for seeing Yorkshire privately. <a href="https://uktravelplanning.com/episode-64/" target="_blank" rel="noopener noreferrer">Listen &rarr;</a></p></div></article>
         <article class="hl-card"><div class="hl-media"><img src="/assets/images/WowmomentYorkshireDales.webp" width="3024" height="4032" alt="A wow-moment viewpoint in the Yorkshire Dales" loading="lazy"></div><div class="hl-body"><h3>UK Travel Planning Podcast &mdash; Ep. 137</h3><p>&ldquo;Yorkshire Uncovered&rdquo;: Andrew shares his top five must-do Yorkshire experiences. <a href="https://uktravelplanning.com/episode-137/" target="_blank" rel="noopener noreferrer">Listen &rarr;</a></p></div></article>
@@ -344,10 +371,10 @@
       <div class="m-acc-panel"><a href="/chauffeur-service/">Chauffeur service</a><a href="/chauffeur-service/airport-transfers/">Airport transfers</a><a href="/chauffeur-service/cruise-port-transfers/">Cruise &amp; port transfers</a><a href="/transfers/york-to-edinburgh/">York ⇄ Edinburgh</a><a href="/transfers/edinburgh-to-york/">Edinburgh → York</a><a href="/transfers/york-to-london-via-cambridge/">York → London (Cambs)</a><a href="/transfers/london-to-york-via-cambridge/">London → York (Cambs)</a><a href="/express-transfers/">Express / no-touring</a></div></div>
       <div class="m-acc">
       <button class="m-acc-trigger" aria-expanded="false">Why Us <span class="pm">+</span></button>
-      <div class="m-acc-panel"><a href="/why-private/">Why private</a><a href="/why-book-direct/">Why book direct</a><a href="/private-tour-pricing/">Private pricing</a><a href="/travel-trade/agents-and-dmcs/">For travel trade</a><a href="/the-vehicle/">The vehicle</a><a href="/meet-the-guides/">Meet the guides</a><a href="/about/">About us</a></div></div>
+      <div class="m-acc-panel"><a href="/why-private/">Why private</a><a href="/why-book-direct/">Why book direct</a><a href="/private-tour-pricing/">Private pricing</a><a href="/travel-trade/">For travel trade</a><a href="/the-vehicle/">The vehicle</a><a href="/meet-the-guides/">Meet the guides</a><a href="/about/">About us</a></div></div>
       <div class="m-acc">
       <button class="m-acc-trigger" aria-expanded="false">Reviews <span class="pm">+</span></button>
-      <div class="m-acc-panel"><a href="/reviews/">Guest reviews</a><a href="https://www.tripadvisor.co.uk/Attraction_Review-g186346-d24186764-Reviews-Expedition_Yorkshire_ltd-York_North_Yorkshire_England.html" target="_blank" rel="noopener noreferrer">TripAdvisor</a><a href="https://www.google.com/search?q=Expedition+Yorkshire+Reviews" target="_blank" rel="noopener noreferrer">Google Reviews</a><a href="#">In the press</a><a href="#">· Harper&#x27;s Bazaar</a><a href="#">· Podcasts</a></div></div>
+      <div class="m-acc-panel"><a href="/reviews/">Guest reviews</a><a href="https://www.tripadvisor.co.uk/Attraction_Review-g186346-d24186764-Reviews-Expedition_Yorkshire_ltd-York_North_Yorkshire_England.html" target="_blank" rel="noopener noreferrer">TripAdvisor</a><a href="https://www.google.com/search?q=Expedition+Yorkshire+Reviews" target="_blank" rel="noopener noreferrer">Google Reviews</a><a href="/press/">In the press</a><a href="#">· Harper&#x27;s Bazaar</a><a href="#">· Podcasts</a></div></div>
     </div>
     <div class="mobile-drawer-foot">
       <button class="btn btn-primary btn-block" data-open-enquiry>Check availability</button>
