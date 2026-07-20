@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expedition Yorkshire — Email Signature Preview</title>
+<style>
+  html,body{margin:0;padding:0;background:#EFEAE0;color:#1F2A24;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 80px;}
+  .masthead{text-align:center;margin-bottom:40px;}
+  .masthead .kick{font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#B7642F;margin:0 0 10px;}
+  .masthead h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:30px;letter-spacing:-0.01em;margin:0 0 8px;color:#23342B;}
+  .masthead p{font-size:14px;color:#6B7F70;margin:0;max-width:520px;margin:0 auto;line-height:1.6;}
+  .card{background:#FFFFFF;border:1px solid #E2DBCC;border-radius:14px;padding:30px;margin:0 0 30px;
+    box-shadow:0 1px 2px rgba(31,42,36,.04),0 12px 30px rgba(31,42,36,.06);}
+  .card h2{font-family:Georgia,serif;font-weight:400;font-size:19px;margin:0 0 4px;color:#23342B;}
+  .card .meta{font-size:12px;color:#8A9389;margin:0 0 22px;letter-spacing:.02em;}
+  .card .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:#B7642F;background:#F5EFE4;border-radius:999px;padding:4px 10px;margin-left:8px;vertical-align:2px;}
+  .frame{background:#FBFAF6;border-radius:10px;padding:26px;overflow-x:auto;
+    background-image:linear-gradient(#00000008 1px,transparent 1px),linear-gradient(90deg,#00000008 1px,transparent 1px);
+    background-size:22px 22px;}
+  .frame.dark{background:#26382E;background-image:linear-gradient(#ffffff0a 1px,transparent 1px),linear-gradient(90deg,#ffffff0a 1px,transparent 1px);}
+  .frame.email{background:#ffffff;background-image:none;border:1px solid #ECE6D9;}
+  .email-body{max-width:560px;}
+  .email-body .msg{font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#333;margin:0 0 4px;}
+  .email-body .sep{height:20px;}
+  .note{font-size:12.5px;color:#6B7F70;line-height:1.6;margin:16px 2px 0;}
+  .note b{color:#3a4f43;}
+  iframe{width:100%;border:0;display:block;}
+  footer{text-align:center;color:#969E93;font-size:12px;margin-top:20px;line-height:1.7;}
+  footer code{background:#00000008;padding:2px 6px;border-radius:4px;font-size:11.5px;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="masthead">
+      <p class="kick">Expedition Yorkshire</p>
+      <h1>Email Signature — Preview</h1>
+      <p>Three brand-matched, Outlook-safe signatures for Andrew Ward. Compare them below, then follow <b>README.md</b> to install. Everything renders here from the local <code>./assets/</code> folder.</p>
+    </div>
+
+    <!-- FULL -->
+    <div class="card">
+      <h2>Primary signature <span class="tag">Recommended</span></h2>
+      <p class="meta">index.html · 640px · portrait, contact, tagline, logo, CTA &amp; rating</p>
+      <div class="frame">
+        <iframe id="f1" src="index.html" scrolling="no" title="Primary signature"></iframe>
+      </div>
+      <p class="note"><b>Use for:</b> first contact, proposals, enquiries — the full-impression signature.</p>
+    </div>
+
+    <!-- MINIMAL -->
+    <div class="card">
+      <h2>Minimal signature</h2>
+      <p class="meta">index-minimal.html · compact · portrait, contact &amp; wordmark</p>
+      <div class="frame">
+        <iframe id="f2" src="index-minimal.html" scrolling="no" title="Minimal signature"></iframe>
+      </div>
+      <p class="note"><b>Use for:</b> replies and day-to-day threads where a lighter footer feels right.</p>
+    </div>
+
+    <!-- BUSINESS CARD -->
+    <div class="card">
+      <h2>Business-card signature <span class="tag">Design-led</span></h2>
+      <p class="meta">business-card.html · 600px · deep-forest, cream wordmark, gold CTA</p>
+      <div class="frame dark">
+        <iframe id="f3" src="business-card.html" scrolling="no" title="Business-card signature"></iframe>
+      </div>
+      <p class="note"><b>Use for:</b> a statement footer — introductions to new clients &amp; the travel trade.</p>
+    </div>
+
+    <!-- IN CONTEXT -->
+    <div class="card">
+      <h2>In context — how it looks under an email</h2>
+      <p class="meta">Primary signature beneath a short message</p>
+      <div class="frame email">
+        <div class="email-body">
+          <p class="msg">Hi Sarah,</p>
+          <p class="msg">Lovely to hear from you. I've sketched a route through the Dales and Wensleydale for your three days with us — I'll send the full itinerary across tomorrow. Any thoughts on pace, do let me know.</p>
+          <p class="msg">Warm regards,</p>
+          <div class="sep"></div>
+          <iframe id="f4" src="index.html" scrolling="no" title="Signature in context"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Rendering from <code>./assets/</code>. For live email, replace the image base path with your hosted HTTPS URL (README&nbsp;step&nbsp;1).<br>
+      Expedition Yorkshire Ltd · Private chauffeur-guided touring
+    </footer>
+  </div>
+
+  <script>
+    // Auto-size each iframe to its content (local preview convenience only —
+    // the signatures themselves contain no JavaScript).
+    function fit(f){
+      try{
+        var d=f.contentDocument||f.contentWindow.document;
+        var h=Math.max(d.body.scrollHeight,d.documentElement.scrollHeight);
+        f.style.height=(h+2)+'px';
+      }catch(e){}
+    }
+    window.addEventListener('load',function(){
+      ['f1','f2','f3','f4'].forEach(function(id){
+        var f=document.getElementById(id);
+        if(!f)return;
+        fit(f);
+        f.addEventListener('load',function(){fit(f);});
+        setTimeout(function(){fit(f);},300);
+      });
+    });
+  </script>
+</body>
+</html>
