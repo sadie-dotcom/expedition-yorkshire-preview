@@ -135,7 +135,7 @@ Details are plain text inside each `.html`. To change them, open the file and ed
 
 - **Phone:** the visible `01904 235928` **and** the `tel:+441904235928` link.
 - **Email:** the visible address **and** the `mailto:` link.
-- **Links:** website, Instagram, Facebook and the CTA (`design-your-tour`) are standard `href="…"` attributes.
+- **Links:** website, Instagram, Facebook and the CTA (`/contact/`) are standard `href="…"` attributes.
 
 ---
 

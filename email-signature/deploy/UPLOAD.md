@@ -89,7 +89,7 @@ Optional hosted gallery (after push):
 | Website | `https://expeditionyorkshire.com` |
 | Instagram | `https://www.instagram.com/expedition_yorkshire/` |
 | Facebook | `https://www.facebook.com/Expedition-Yorkshire-102983935644434` |
-| CTA button | `https://expeditionyorkshire.com/design-your-tour` |
+| CTA button | `https://www.expeditionyorkshire.com/contact/` |
 
 These stay on `expeditionyorkshire.com` on purpose — they are real destination links, not images. Only
 the **image** URLs use the preview domain for now.
