@@ -237,24 +237,71 @@
   }
   function initForms() {
     $$("form.enquiry-form").forEach(function (form) {
-      // fire view_item when an enquiry form becomes available on the page
       track("view_item", { item_name: form.getAttribute("data-tour") || "General enquiry" });
+
+      // Honeypot: a hidden field real users never see; bots that fill it are rejected server-side.
+      if (!$('[name="_hp"]', form)) {
+        var hp = document.createElement("div");
+        hp.setAttribute("aria-hidden", "true");
+        hp.style.cssText = "position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden";
+        hp.innerHTML = '<label>Leave this field empty<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>';
+        form.appendChild(hp);
+      }
+
+      // Error message element (shown only if a submission fails).
+      var err = $(".form-error", form);
+      if (!err) {
+        err = document.createElement("p");
+        err.className = "form-error";
+        err.setAttribute("role", "alert");
+        err.hidden = true;
+        err.style.cssText = "margin:14px 0 0;color:#b3261e;font-size:.9rem;line-height:1.45";
+        form.appendChild(err);
+      }
+
+      var submitBtn = $('[type="submit"]', form);
+      var DEFAULT_ERROR = "Sorry, we couldn't send your enquiry just now. Please try again, or email andrew@expeditionyorkshire.com or call 01904 235928.";
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (!validateForm(form)) return;
+
         var data = {};
         $$("input,select,textarea", form).forEach(function (el) { if (el.name) data[el.name] = el.value; });
-        // MOCK SUBMISSION — no backend. Replace with real endpoint before launch.
-        track("generate_lead", {
-          currency: "GBP", value: 985,
-          tour: data.tour || form.getAttribute("data-tour") || "General enquiry",
-          group_size: data.group || ""
-        });
-        var card = form.closest(".enquiry") || form.parentNode;
-        var success = $(".form-success", card);
-        form.style.display = "none";
-        if (success) success.classList.add("show");
+
+        err.hidden = true;
+        var originalLabel = submitBtn ? submitBtn.textContent : "";
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending…"; }
+
+        function showError(message) {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
+          err.textContent = message || DEFAULT_ERROR;
+          err.hidden = false;
+        }
+
+        fetch("/api/enquiry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        }).then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (body) {
+            if (res.ok && body && body.ok) {
+              track("generate_lead", {
+                currency: "GBP", value: 985,
+                tour: data.tour || form.getAttribute("data-tour") || "General enquiry",
+                group_size: data.group || ""
+              });
+              var card = form.closest(".enquiry") || form.parentNode;
+              var success = $(".form-success", card);
+              form.style.display = "none";
+              if (success) success.classList.add("show");
+            } else {
+              showError(body && body.error);
+            }
+          });
+        }).catch(function () { showError(); });
       });
+
       // clear invalid state as the user types
       $$("input,select,textarea", form).forEach(function (el) {
         el.addEventListener("input", function () { var w = el.closest(".field"); if (w) w.classList.remove("invalid"); });
