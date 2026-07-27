@@ -22,3 +22,73 @@
 /tours/york-to-edinburgh	/transfers/york-to-edinburgh/	301
 
 /blog/freedom-and-spring-time-in-the-yorkshire-dales/* /journal/freedom-and-spring-time-in-the-yorkshire-dales/ 301
+
+# Batch 2026-07-27 -- redirects from Redirects spreadsheet (65 new rules)
+# Legacy expeditionyorkshire.com URLs -> new canonical paths. 301 permanent.
+# Non-ASCII slugs are percent-encoded. Existing rules above are unchanged.
+
+/blog/  /journal/  301
+/tours/wuthering-heights-movie-tour/  /tours/  301
+/travel-advisors-and-dmcs/  /travel-trade/agents-and-dmcs/  301
+/t-c/  /terms/  301
+/faq-s/  /faqs/  301
+/tours/grand-english-house-coast-tour/  /tours/yorkshire-dales-castles/  301
+/express-transfers/  /chauffeur-service/  301
+/tours/bront%C3%AB-tour/  /tours/bronte-country/  301
+/tours/moor-coast-cliff/  /tours/whitby-moors-coast/  301
+/blog/tag=landmarks/  /journal/  301
+/blog/month=202505/  /journal/  301
+/blog/month=202602/  /journal/  301
+/blog/tag=podcast/  /journal/  301
+/blog/yorkshire-at-christmas-magical-markets-stately-homes-winter-walks-you%E2%80%99ll-never-forget/  /plan/best-time-to-visit/  301
+/blog/tag=james%20herriot/  /journal/  301
+/blog/month=202509/  /journal/  301
+/blog/tag=york/  /journal/  301
+/blog/tag=leeds/  /journal/  301
+/blog/page=2/  /journal/  301
+/blog/tag=cities/  /journal/  301
+/blog/tag=christmas/  /journal/  301
+/blog/discover-yorkshire-through-football-the-ultimate-sports-tourism-experience/  /journal/discover-yorkshire-through-football-the-ultimate-sports-tourism-experience/  301
+/blog/tag=article/  /journal/  301
+/blog/why-yorkshire-is-the-ultimate-summer-vacation-location/  /journal/why-yorkshire-is-the-ultimate-summer-vacation-location/  301
+/blog/month=202504/  /journal/  301
+/blog/month=202601/  /journal/  301
+/blog/month=202512/  /journal/  301
+/blog/tag=literature/  /journal/  301
+/blog/month=202508/  /journal/  301
+/blog/explore-yorkshire%E2%80%99s-viking-medieval-heritage-on-a-guided-tour/  /journal/explore-yorkshires-viking-medieval-heritage-on-a-guided-tour/  301
+/blog/wuthering-heights-film-2026-exploring-the-wild-heart-of-yorkshire/  /journal/wuthering-heights-film-2026-exploring-the-wild-heart-of-yorkshire/  301
+/tours/all-creatures-great-small/  /tours/all-creatures-tour/  301
+/blog/explore-coastal-yorkshire-why-guided-tours-make-the-experience-unforgettable/  /journal/explore-coastal-yorkshire-why-guided-tours-make-the-experience-unforgettable/  301
+/blog/month=202310/  /journal/  301
+/blog/month=202507/  /journal/  301
+/blog/month=202402/  /journal/  301
+/blog/month=202511/  /journal/  301
+/blog/tag=yorkshire%20dales/  /journal/  301
+/blog/visit-leeds-the-ultimate-yorkshire-city-guide-for-first-time-visitors/  /journal/visit-leeds-the-ultimate-yorkshire-city-guide-for-first-time-visitors/  301
+/blog/why-private-tours-are-becoming-the-1-choice-for-us-travellers-visiting-the-uk/  /journal/why-private-tours-are-becoming-the-1-choice-for-us-travellers-visiting-the-uk/  301
+/blog/valentine%E2%80%99s-in-yorkshire-romance-adventure-and-private-tours-for-two/  /journal/valentines-in-yorkshire-romance-adventure-and-private-tours-for-two/  301
+/blog/tag=all%20creatures%20great%20and%20small/  /journal/  301
+/blog/tag=tripadvisor/  /journal/  301
+/blog/yorkshire-the-uk%E2%80%99s-hidden-gem-of-luxury-travel/  /luxury-yorkshire-day-tours/  301
+/blog/month=202506/  /journal/  301
+/blog/month=202603/  /journal/  301
+/blog/beyond-the-books-the-real-lives-of-the-bront%C3%AB-sisters-in-yorkshire/  /journal/beyond-the-books-the-real-lives-of-the-bronte-sisters-in-yorkshire/  301
+/blog/why-yorkshire-is-the-best-place-to-visit-in-england-in-the-winter/  /plan/best-time-to-visit/  301
+/blog/month=202203/  /journal/  301
+/blog/month=202312/  /journal/  301
+/blog/month=202510/  /journal/  301
+/blog/long-distance-private-tours-are-in/  /journal/long-distance-private-tours-are-in/  301
+/blog/the-ultimate-guide-to-accommodation-in-yorkshire-where-to-stay-for-a-true-taste-of-english-charm/  /plan/accommodation/  301
+/blog/discover-the-heart-of-yorkshire-through-all-creatures-great-and-small/  /journal/discover-the-heart-of-yorkshire-through-all-creatures-great-and-small/  301
+/blog/a-taste-of-yorkshire-local-food-and-drink-experiences-to-add-to-your-tour/  /plan/food-and-drink/  301
+/blog/castle-howard-england-yorkshire-s-crown-jewel-of-history-heritage-and-hollywood/  /journal/castle-howard-england-yorkshires-crown-jewel-of-history-heritage-and-hollywood/  301
+/blog/yorkshire-the-greatest-place-to-visit-in-the-world/  /journal/  301
+/blog/yorkshire-for-literature-lovers-reader-s-digest/  /journal/yorkshire-for-literature-lovers-readers-digest/  301
+/blog/yorkshire-dales-dark-sky-reserve/  /journal/yorkshire-dales-dark-sky-reserve/  301
+/blog/yorkshire-sheep-a-love-letter-to-the-woolly-heart-of-england/  /journal/yorkshire-sheep-a-love-letter-to-the-woolly-heart-of-england/  301
+/blog/uk-travel-planning-podcast/  /press/  301
+/blog/fountains-abbey-in-yorkshire/  /journal/fountains-abbey-in-yorkshire/  301
+/blog/yorkshire-at-christmas/  /plan/best-time-to-visit/  301
+/blog/yorkshire-at-winter/  /plan/best-time-to-visit/  301
+/blog/sheep/  /journal/yorkshire-sheep-a-love-letter-to-the-woolly-heart-of-england/  301
