@@ -84,7 +84,7 @@
   var PICKER_TOURS = [
     { name: 'Whitby, Moors & Coast',            id: '1230929', blurb: 'Abbey ruins, harbour town & the wild North York Moors coast.' },
     { name: 'Dales, Castles & Villages',        id: '1230928', blurb: 'Waterfalls, dry-stone dales & storybook stone villages.' },
-    { name: 'All Creatures Great & Small',      id: '1230925', blurb: 'Herriot filming country across the Yorkshire Dales.' },
+    { name: 'All Creatures',      id: '1230925', blurb: 'Herriot filming country across the Yorkshire Dales.' },
     { name: 'Brontë Country',                   id: '1230928', blurb: 'Haworth, the Parsonage & the wuthering moortops.' },
     { name: 'York to Edinburgh Scenic Transfer',id: '1230927', blurb: 'A touring transfer north via the coast & Borders.' },
     { name: 'Edinburgh to York Scenic Transfer',id: '1230926', blurb: 'The scenic return south through the Borders.' },
@@ -223,6 +223,66 @@
     window.__eyBokunLoaderInjected = true;
   }
 
+  /* ---------- reCAPTCHA v3 ----------
+     Loads Google reCAPTCHA v3 exactly once, using the PUBLIC site key. The
+     reCAPTCHA v3 site key is public by design (it ships in the page), so it is
+     referenced directly here. Only the SECRET key is private and lives in the
+     Cloudflare environment, used server-side in functions/api/enquiry.js.
+     getToken() resolves to a fresh token for the given action, or to "" if
+     reCAPTCHA is unavailable (the server then rejects the tokenless
+     submission). v3 shows no challenge; scoring happens silently. */
+  var RECAPTCHA_SITE_KEY = "6Lcp-mctAAAAAD5AuxgubUsKKRCwym6Ka86D-ll6";
+  var recaptcha = (function () {
+    var SCRIPT_TIMEOUT = 10000;
+    var readyPromise = null;
+
+    function ready() {
+      if (readyPromise) return readyPromise;
+      readyPromise = new Promise(function (resolve, reject) {
+        function grecaptchaReady() {
+          if (window.grecaptcha && window.grecaptcha.execute) {
+            window.grecaptcha.ready(function () { resolve(); });
+            return true;
+          }
+          return false;
+        }
+        if (grecaptchaReady()) return;
+        if (!document.querySelector("script[data-ey-recaptcha]")) {
+          var s = document.createElement("script");
+          s.src = "https://www.google.com/recaptcha/api.js?render=" + encodeURIComponent(RECAPTCHA_SITE_KEY);
+          s.async = true;
+          s.defer = true;
+          s.setAttribute("data-ey-recaptcha", "1");
+          s.onerror = function () { reject(new Error("reCAPTCHA script failed to load")); };
+          document.head.appendChild(s);
+        }
+        var start = Date.now();
+        (function poll() {
+          if (grecaptchaReady()) return;
+          if (Date.now() - start > SCRIPT_TIMEOUT) { reject(new Error("reCAPTCHA load timed out")); return; }
+          setTimeout(poll, 100);
+        })();
+      });
+      return readyPromise;
+    }
+
+    // Warm up once, ahead of any submit, so a token is ready quickly.
+    function preload() {
+      if (!RECAPTCHA_SITE_KEY) return;
+      ready().catch(function () {});
+    }
+
+    function getToken(action) {
+      if (!RECAPTCHA_SITE_KEY) return Promise.resolve("");
+      return ready().then(function () {
+        return window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: action || "enquiry" })
+          .then(function (t) { return t || ""; }, function () { return ""; });
+      }).catch(function () { return ""; });
+    }
+
+    return { preload: preload, getToken: getToken };
+  })();
+
   /* ---------- Enquiry form (mock) ---------- */
   function validateForm(form) {
     var ok = true;
@@ -236,7 +296,9 @@
     return ok;
   }
   function initForms() {
-    $$("form.enquiry-form").forEach(function (form) {
+    var forms = $$("form.enquiry-form");
+    if (forms.length) recaptcha.preload();
+    forms.forEach(function (form) {
       track("view_item", { item_name: form.getAttribute("data-tour") || "General enquiry" });
 
       // Honeypot: a hidden field real users never see; bots that fill it are rejected server-side.
@@ -279,10 +341,13 @@
           err.hidden = false;
         }
 
-        fetch("/api/enquiry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
+        recaptcha.getToken("enquiry").then(function (token) {
+          data.recaptcha_token = token;
+          return fetch("/api/enquiry", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+          });
         }).then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (body) {
             if (res.ok && body && body.ok) {
