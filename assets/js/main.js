@@ -6,6 +6,22 @@
    ========================================================================= */
 (function () {
   "use strict";
+
+  /* ---------- Microsoft Clarity ----------
+     Loaded once from this shared script (which is included on every page),
+     so Clarity runs site-wide from a single source. Guarded so it can never
+     be injected twice on a page. */
+  (function initClarity() {
+    if (window.__eyClarityLoaded) return;
+    if (document.querySelector('script[src^="https://www.clarity.ms/tag/"]')) { window.__eyClarityLoaded = true; return; }
+    window.__eyClarityLoaded = true;
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "xu29b40cn6");
+  })();
+
   window.dataLayer = window.dataLayer || [];
   function track(event, params) {
     window.dataLayer.push(Object.assign({ event: event }, params || {}));
