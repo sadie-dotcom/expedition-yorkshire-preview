@@ -372,10 +372,10 @@
                 tour: data.tour || form.getAttribute("data-tour") || "General enquiry",
                 group_size: data.group || ""
               });
-              var card = form.closest(".enquiry") || form.parentNode;
-              var success = $(".form-success", card);
-              form.style.display = "none";
-              if (success) success.classList.add("show");
+              // Only after a successful API response, redirect to the dedicated
+              // success page. Failed submissions fall through to showError below
+              // and stay on the form.
+              window.location.assign("/enquiry-received/");
             } else {
               showError(body && body.error);
             }
