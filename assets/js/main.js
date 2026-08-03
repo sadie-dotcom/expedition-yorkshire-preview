@@ -34,7 +34,7 @@
     if (!tourName) return null;
     if (/Whitby/i.test(tourName)) return '1230929';
     if (/Dales/i.test(tourName)) return '1230928';
-    if (/Bront/i.test(tourName)) return '1230928';
+    if (/Bront/i.test(tourName)) return '1264811';
     if (/York to Edinburgh/i.test(tourName) || /York to Edinburgh transfer/i.test(tourName)) return '1230927';
     if (/Edinburgh to York/i.test(tourName) || /Edinburgh to York transfer/i.test(tourName)) return '1230926';
     if (/All Creatures/i.test(tourName)) return '1230925';
@@ -101,7 +101,7 @@
     { name: 'Whitby, Moors & Coast',            id: '1230929', blurb: 'Abbey ruins, harbour town & the wild North York Moors coast.' },
     { name: 'Dales, Castles & Villages',        id: '1230928', blurb: 'Waterfalls, dry-stone dales & storybook stone villages.' },
     { name: 'All Creatures',      id: '1230925', blurb: 'Herriot filming country across the Yorkshire Dales.' },
-    { name: 'Brontë Country',                   id: '1230928', blurb: 'Haworth, the Parsonage & the wuthering moortops.' },
+    { name: 'Brontë Country',                   id: '1264811', blurb: 'Haworth, the Parsonage & the wuthering moortops.' },
     { name: 'York to Edinburgh Scenic Transfer',id: '1230927', blurb: 'A touring transfer north via the coast & Borders.' },
     { name: 'Edinburgh to York Scenic Transfer',id: '1230926', blurb: 'The scenic return south through the Borders.' },
     { name: 'Chauffeur & Private Transfers',    enquiry: true,  blurb: 'Bespoke routes & airport transfers — tell us your plans.' }
