@@ -1,0 +1,10 @@
+# Cloudflare Pages headers
+# Long-lived, immutable caching for static media. These files are served by
+# stable path; if one is updated, save it under a new filename (or bump a
+# version) so returning visitors pick up the change.
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/videos/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/brochures/*
+  Cache-Control: public, max-age=31536000, immutable
