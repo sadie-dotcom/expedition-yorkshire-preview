@@ -15,11 +15,17 @@
     if (window.__eyClarityLoaded) return;
     if (document.querySelector('script[src^="https://www.clarity.ms/tag/"]')) { window.__eyClarityLoaded = true; return; }
     window.__eyClarityLoaded = true;
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+    // Define the clarity() command queue synchronously (so no early calls are
+    // lost), but defer the actual network load until the browser is idle so it
+    // never competes with first paint. Same tag id, same data captured.
+    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+    function loadClarity() {
+      var l = document, r = "script", i = "xu29b40cn6", t, y;
       t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
       y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "xu29b40cn6");
+    }
+    if ("requestIdleCallback" in window) requestIdleCallback(loadClarity, { timeout: 3000 });
+    else setTimeout(loadClarity, 1500);
   })();
 
   window.dataLayer = window.dataLayer || [];
@@ -239,6 +245,22 @@
     window.__eyBokunLoaderInjected = true;
   }
 
+  /* Lazy trigger: only fetch Bokun's (heavy) third-party loader when the page's
+     dedicated booking calendar approaches the viewport. The modal "Check
+     availability" path calls initBokunWidgets() directly and is unaffected.
+     Falls back to an immediate load where IntersectionObserver is unavailable. */
+  function initBokunLazy() {
+    var widget = document.querySelector('.bokun-booking-shell:not(.bokun-modal-calendars) .bokunWidget');
+    if (!widget) return;
+    if (!('IntersectionObserver' in window)) { initBokunWidgets(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      for (var n = 0; n < entries.length; n++) {
+        if (entries[n].isIntersecting) { io.disconnect(); initBokunWidgets(); return; }
+      }
+    }, { rootMargin: '800px 0px' });
+    io.observe(widget.closest('.bokun-booking-shell') || widget);
+  }
+
   /* ---------- reCAPTCHA v3 ----------
      Loads Google reCAPTCHA v3 exactly once, using the PUBLIC site key. The
      reCAPTCHA v3 site key is public by design (it ships in the page), so it is
@@ -313,7 +335,22 @@
   }
   function initForms() {
     var forms = $$("form.enquiry-form");
-    if (forms.length) recaptcha.preload();
+    // Defer reCAPTCHA until the visitor shows enquiry intent (opens the enquiry
+    // modal or focuses a form field). A v3 token is only needed at submit, so
+    // this keeps reCAPTCHA off the initial page load without affecting the form;
+    // getToken() still lazy-loads it on submit as a fallback.
+    if (forms.length) {
+      var onEnquiryIntent = function (e) {
+        var el = e.target;
+        if (el && el.closest && el.closest('[data-open-enquiry], form.enquiry-form')) {
+          try { recaptcha.preload(); } catch (err) {}
+          document.removeEventListener('pointerdown', onEnquiryIntent, true);
+          document.removeEventListener('focusin', onEnquiryIntent, true);
+        }
+      };
+      document.addEventListener('pointerdown', onEnquiryIntent, true);
+      document.addEventListener('focusin', onEnquiryIntent, true);
+    }
     forms.forEach(function (form) {
       track("view_item", { item_name: form.getAttribute("data-tour") || "General enquiry" });
 
@@ -689,7 +726,7 @@
     try { initFaq(); } catch (e) {}
     try { initForms(); } catch (e) {}
     try { initModal(); } catch (e) {}
-    try { initBokunWidgets(); } catch (e) {}
+    try { initBokunLazy(); } catch (e) {}
     try { initStickyHeader(); } catch (e) {}
     try { initStickyBar(); } catch (e) {}
     try { initBookingDock(); } catch (e) {}
