@@ -554,6 +554,11 @@
         e.preventDefault();
         var tourName = resolveTourName(btn);
 
+        // Opt-in: buttons flagged data-enquiry always open the standard
+        // enquiry form with this page's tour context, never the Bokun
+        // calendar. Reuses the existing open()/enquiry-form + submission.
+        if (btn.hasAttribute("data-enquiry")) { open(tourName || ""); return; }
+
         // Is this button explicitly tied to a tour (card / "Help me choose")?
         var explicit = btn.getAttribute("data-bokun-id") || btn.getAttribute("data-experience-id");
         var tourAttr = btn.getAttribute("data-tour");
