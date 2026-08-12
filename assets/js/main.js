@@ -705,10 +705,18 @@
   function initConsent() {
     var c = document.getElementById('consent');
     if (!c) return;
+    // Remember the choice for the rest of this browser session. If the user
+    // has already accepted or declined, keep the banner hidden on every page
+    // load and refresh. sessionStorage is cleared only when the browser
+    // session ends, so the banner reappears in a genuinely new session.
+    var stored = null;
+    try { stored = sessionStorage.getItem('ey.consent'); } catch (err) {}
+    if (stored) { c.style.display = 'none'; return; }
     c.addEventListener('click', function (e) {
       var t = e.target.closest('[data-consent]');
       if (!t) return;
       var val = t.getAttribute('data-consent');
+      try { sessionStorage.setItem('ey.consent', val); } catch (err) {}
       try { localStorage.setItem('ey.consent', val); } catch (err) {}
       c.style.display = 'none';
     });
